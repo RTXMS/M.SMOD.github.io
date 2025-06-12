@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مود ون بيس - M.S MOD</title>
+  <title>M.S MOD - موقع المودات</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --main-color: #e53935;
       --accent-color: #43a047;
+      --naruto-color: #ff6f00;
+      --dragonball-color: #ffd600;
       --dark-bg: #121212;
       --light-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -22,9 +28,70 @@
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1200px;
       margin: auto;
       padding: 20px;
+    }
+
+    /* شريط التنقل */
+    .navbar {
+      background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+      padding: 15px 0;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-icon {
+      margin-right: 10px;
+      font-size: 1.5em;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      margin-left: 15px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 8px;
+      transition: background 0.3s;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .nav-links a.active {
+      background: white;
+      color: var(--main-color);
     }
 
     header {
@@ -35,33 +102,76 @@
     header h1 {
       font-size: 2.5em;
       color: var(--main-color);
-      text-shadow: 0 0 8px var(--accent-color);
+      text-shadow: 0 0 8px rgba(0,0,0,0.2);
       animation: shine 2s infinite alternate;
+      margin-bottom: 10px;
+    }
+
+    .page-subtitle {
+      font-size: 1.2em;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto 20px;
     }
 
     @keyframes shine {
-      0% { text-shadow: 0 0 8px var(--accent-color); }
-      100% { text-shadow: 0 0 18px var(--main-color); }
+      0% { text-shadow: 0 0 8px rgba(0,0,0,0.2); }
+      100% { text-shadow: 0 0 18px rgba(0,0,0,0.3); }
+    }
+
+    /* محتوى الصفحات */
+    .page-content {
+      display: none;
+    }
+
+    .page-content.active {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* بطاقات المودات */
+    .mods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
     }
 
     .mod-card {
       background: #f9f9f9;
       border: 2px solid var(--accent-color);
       border-radius: 16px;
-      padding: 15px;
-      margin-bottom: 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       overflow: hidden;
-      text-align: center; /* توسيط المحتوى */
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .mod-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .mod-card.naruto {
+      border-color: var(--naruto-color);
+    }
+
+    .mod-card.dragonball {
+      border-color: var(--dragonball-color);
     }
 
     .mod-card img {
-      max-width: 600px;
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto 15px;
+      max-width: 100%;
+      height: 180px;
+      object-fit: cover;
       border-radius: 12px;
+      margin-bottom: 15px;
       border: 2px solid #ddd;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
@@ -69,10 +179,20 @@
     .mod-card h2 {
       margin: 0 0 10px;
       color: var(--main-color);
+      font-size: 1.5em;
+    }
+
+    .mod-card.naruto h2 {
+      color: var(--naruto-color);
+    }
+
+    .mod-card.dragonball h2 {
+      color: var(--dragonball-color);
     }
 
     .mod-card p {
       margin-bottom: 20px;
+      line-height: 1.6;
     }
 
     .download-btn {
@@ -93,6 +213,15 @@
       box-shadow: 0 6px 8px rgba(0,0,0,0.3);
     }
 
+    .naruto .download-btn {
+      background-color: var(--naruto-color);
+    }
+
+    .dragonball .download-btn {
+      background-color: var(--dragonball-color);
+    }
+
+    /* الوضع الليلي */
     .night-mode {
       background-color: var(--dark-bg);
       color: #eee;
@@ -100,7 +229,6 @@
 
     .night-mode .mod-card {
       background-color: #1e1e1e;
-      border-color: var(--main-color);
     }
 
     .night-mode .mod-card img {
@@ -108,12 +236,12 @@
     }
 
     .night-mode .download-btn {
-      background-color: var(--main-color);
+      color: #fff;
     }
 
     .toggle-night {
       position: fixed;
-      top: 10px;
+      top: 80px;
       left: 10px;
       background: var(--accent-color);
       color: #fff;
@@ -132,16 +260,31 @@
 
     /* تصميم متجاوب للجوال */
     @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+      }
+      
+      .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .nav-links li {
+        margin: 5px;
+      }
+      
       header h1 {
         font-size: 1.8em;
       }
       
-      .mod-card img {
-        max-width: 90%;
+      .mods-grid {
+        grid-template-columns: 1fr;
       }
       
-      .container {
-        padding: 15px;
+      .toggle-night {
+        top: 15px;
+        left: 15px;
       }
     }
   </style>
@@ -150,31 +293,165 @@
 
   <button class="toggle-night" onclick="toggleMode()">🌙</button>
 
+  <!-- شريط التنقل -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo" onclick="showPage('home')">
+        <span class="logo-icon">🎮</span> M.S MOD
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#" class="active" onclick="showPage('home')">الرئيسية</a></li>
+        <li><a href="#" onclick="showPage('onepiece')">ون بيس</a></li>
+        <li><a href="#" onclick="showPage('naruto')">ناروتو</a></li>
+        <li><a href="#" onclick="showPage('dragonball')">دراغون بول</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="container">
-    <header>
-      <h1>M.S MOD - مود ون بيس</h1>
-    </header>
-
-    <div class="mod-card">
-      <!-- الصورة المعدلة -->
-      <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" 
-           alt="مود ون بيس"
-           width="600"
-           height="400">
-
-      <h2>مود ون بيس لماين كرافت</h2>
-      <p>
-        استمتع بتجربة عالم ون بيس داخل ماين كرافت! يضم المود شخصيات مثل لوفي، زورو، كايدو، بيغ مام، فواكه الشيطان، السيوف، والقدرات الأسطورية.
-      </p>
-
-      <a class="download-btn" href="https://www.mediafire.com/file/abc123/onepiece-mod.apk/file">تحميل المود</a>
+    <!-- الصفحة الرئيسية -->
+    <div id="home" class="page-content active">
+      <header>
+        <h1>مرحبًا بكم في M.S MOD</h1>
+        <p class="page-subtitle">استمتع بأفضل مودات الأنيمي لماين كرافت! اختر من بين مجموعة المودات الرائعة لدينا</p>
+      </header>
+      
+      <div class="mods-grid">
+        <div class="mod-card" onclick="showPage('onepiece')">
+          <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس">
+          <h2>مود ون بيس</h2>
+          <p>استمتع بتجربة عالم ون بيس داخل ماين كرافت مع شخصيات مثل لوفي، زورو، كايدو، بيغ مام، فواكه الشيطان، والسيوف الأسطورية.</p>
+          <a class="download-btn" href="#">تصفح المود</a>
+        </div>
+        
+        <div class="mod-card naruto" onclick="showPage('naruto')">
+          <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود ناروتو">
+          <h2>مود ناروتو</h2>
+          <p>انضم إلى قرية الورق وتعلم الجوتسو! يضم المود شخصيات ناروتو، ساسكي، كاكاشي، وتقنيات الشاكرا المختلفة.</p>
+          <a class="download-btn" href="#">تصفح المود</a>
+        </div>
+        
+        <div class="mod-card dragonball" onclick="showPage('dragonball')">
+          <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود دراغون بول">
+          <h2>مود دراغون بول</h2>
+          <p>اصبح سايان وانطلق في رحلات عبر الكون! يضم المود شخصيات جوكو، فيجيتا، بيروس، وتقنيات الكي الشهيرة.</p>
+          <a class="download-btn" href="#">تصفح المود</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- صفحة ون بيس -->
+    <div id="onepiece" class="page-content">
+      <header>
+        <h1>مود ون بيس - M.S MOD</h1>
+        <p class="page-subtitle">استمتع بتجربة عالم ون بيس داخل ماين كرافت</p>
+      </header>
+      
+      <div class="mod-card">
+        <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس">
+        <h2>مود ون بيس لماين كرافت</h2>
+        <p>
+          استمتع بتجربة عالم ون بيس داخل ماين كرافت! يضم المود شخصيات مثل لوفي، زورو، كايدو، بيغ مام، فواكه الشيطان، السيوف، والقدرات الأسطورية.
+          <br><br>
+          مميزات المود:
+        </p>
+        <ul style="text-align: right; padding-right: 20px;">
+          <li>أكثر من 20 شخصية من عالم ون بيس</li>
+          <li>15 نوعًا من فواكه الشيطان</li>
+          <li>أنظمة قتال متقدمة</li>
+          <li>سفن قراصنة قابلة للبناء</li>
+          <li>أزياء وشخصيات قابلة للتخصيص</li>
+        </ul>
+        <a class="download-btn" href="https://www.mediafire.com/file/abc123/onepiece-mod.apk/file">تحميل المود</a>
+      </div>
+    </div>
+    
+    <!-- صفحة ناروتو -->
+    <div id="naruto" class="page-content">
+      <header>
+        <h1>مود ناروتو - M.S MOD</h1>
+        <p class="page-subtitle">انضم إلى قرية الورق وتعلم الجوتسو!</p>
+      </header>
+      
+      <div class="mod-card naruto">
+        <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود ناروتو">
+        <h2>مود ناروتو لماين كرافت</h2>
+        <p>
+          انضم إلى عالم النينجا وتعلم تقنيات الشاكرا! يضم المود شخصيات ناروتو، ساسكي، كاكاشي، ساكورا، وغيرهم من الشخصيات المحبوبة.
+          <br><br>
+          مميزات المود:
+        </p>
+        <ul style="text-align: right; padding-right: 20px;">
+          <li>شخصيات من جميع القرى الخفية</li>
+          <li>أكثر من 50 تقنية جوتسو مختلفة</li>
+          <li>أنظمة الشاكرا والطاقات الخاصة</li>
+          <li>أسلحة النينجا والشنبوريكن</li>
+          <li>قرى خفية قابلة للاستكشاف</li>
+        </ul>
+        <a class="download-btn" href="#">تحميل المود</a>
+      </div>
+    </div>
+    
+    <!-- صفحة دراغون بول -->
+    <div id="dragonball" class="page-content">
+      <header>
+        <h1>مود دراغون بول - M.S MOD</h1>
+        <p class="page-subtitle">اصبح سايان وانطلق في رحلات عبر الكون!</p>
+      </header>
+      
+      <div class="mod-card dragonball">
+        <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود دراغون بول">
+        <h2>مود دراغون بول لماين كرافت</h2>
+        <p>
+          استكشف عالم دراغون بول وقاتل أقوى الأعداء! يضم المود شخصيات جوكو، فيجيتا، بيروس، ومايستر شينرون.
+          <br><br>
+          مميزات المود:
+        </p>
+        <ul style="text-align: right; padding-right: 20px;">
+          <li>تحولات السايان المختلفة</li>
+          <li>تقنيات الكي الشهيرة (كاميهاها، جينكي دم، إلخ)</li>
+          <li>نظام قوة القتال والتدريب</li>
+          <li>كائنات دراغون بول السبعة</li>
+          <li>كايوكن وفتح العين الثالثة</li>
+        </ul>
+        <a class="download-btn" href="#">تحميل المود</a>
+      </div>
     </div>
   </div>
 
   <script>
+    // تبديل الوضع الليلي
     function toggleMode() {
       document.body.classList.toggle('night-mode');
     }
+    
+    // تبديل الصفحات
+    function showPage(pageId) {
+      // إخفاء كل الصفحات
+      document.querySelectorAll('.page-content').forEach(page => {
+        page.classList.remove('active');
+      });
+      
+      // إظهار الصفحة المطلوبة
+      document.getElementById(pageId).classList.add('active');
+      
+      // تحديث قائمة التنقل
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // تحديد العنصر النشط في القائمة
+      if(pageId === 'home') {
+        document.querySelector('.nav-links a[onclick*="home"]').classList.add('active');
+      } else if(pageId === 'onepiece') {
+        document.querySelector('.nav-links a[onclick*="onepiece"]').classList.add('active');
+      } else if(pageId === 'naruto') {
+        document.querySelector('.nav-links a[onclick*="naruto"]').classList.add('active');
+      } else if(pageId === 'dragonball') {
+        document.querySelector('.nav-links a[onclick*="dragonball"]').classList.add('active');
+      }
+    }
   </script>
 </body>
-</html>
+          </html>
