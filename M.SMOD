@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>M.S MOD | مودات ماين كرافت</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .mod {
+      background: #222;
+      padding: 15px;
+      margin: 20px auto;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+    }
+    .download {
+      background: #4CAF50;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 10px;
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>مرحباً بك في M.S MOD</h1>
+  <p>أفضل مودات ماين كرافت للجوال</p>
+
+  <div class="mod">
+    <h2>مود كريزي بلوك</h2>
+    <p>مود رائع لعشاق التحديات</p>
+    <a class="download" href="#">تحميل</a>
+  </div>
+</body>
+</html>
