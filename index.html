@@ -1,457 +1,703 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>M.S MOD - موقع المودات</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M.S MOD - مودات الأنيمي لماين كرافت</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --main-color: #e53935;
       --accent-color: #43a047;
+      --onepiece-color: #e53935;
       --naruto-color: #ff6f00;
       --dragonball-color: #ffd600;
+      --onepunch-color: #ff5722;
+      --aot-color: #9e9e9e;
+      --demonslayer-color: #673ab7;
+      --hxh-color: #ff4081;
+      --bleach-color: #00bcd4;
+      --jojo-color: #ffeb3b;
+      --fairytail-color: #2196f3;
       --dark-bg: #121212;
       --light-bg: #ffffff;
+      --card-bg: #f9f9f9;
+      --text-dark: #333;
+      --text-light: #eee;
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      margin: 0;
-      font-family: 'Cairo', sans-serif;
       background-color: var(--light-bg);
-      color: #333;
-      transition: background-color 0.3s, color 0.3s;
+      color: var(--text-dark);
+      transition: var(--transition);
     }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
+    body.night-mode {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
     }
 
-    /* شريط التنقل */
-    .navbar {
-      background: linear-gradient(90deg, var(--main-color), var(--accent-color));
-      padding: 15px 0;
-      border-radius: 0 0 15px 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      margin-bottom: 30px;
+    /* تصميم الهيدر */
+    header {
+      background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+      padding: 20px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .header-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
-    }
-
-    .logo {
-      font-size: 1.8em;
-      font-weight: bold;
-      color: white;
-      text-decoration: none;
       display: flex;
+      justify-content: space-between;
       align-items: center;
     }
 
-    .logo-icon {
-      margin-right: 10px;
-      font-size: 1.5em;
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
 
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--main-color);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .logo-text {
+      font-size: 2rem;
+      font-weight: 800;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      letter-spacing: 1px;
+    }
+
+    .logo-text span {
+      color: #ffeb3b;
+    }
+
+    /* شريط التنقل */
     .nav-links {
       display: flex;
       list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-links li {
-      margin-left: 15px;
+      gap: 25px;
     }
 
     .nav-links a {
       color: white;
       text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
       padding: 8px 15px;
-      border-radius: 8px;
-      transition: background 0.3s;
-      font-weight: bold;
+      border-radius: 30px;
+      transition: var(--transition);
+      position: relative;
     }
 
     .nav-links a:hover {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
     }
 
-    .nav-links a.active {
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
       background: white;
-      color: var(--main-color);
+      transition: var(--transition);
     }
 
-    header {
+    .nav-links a:hover::after {
+      width: 70%;
+    }
+
+    /* زر الوضع الليلي */
+    .theme-toggle {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: white;
+      font-size: 1.3rem;
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: rotate(30deg);
+    }
+
+    /* محتوى الصفحة */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .page-title {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      position: relative;
     }
 
-    header h1 {
-      font-size: 2.5em;
+    .page-title h1 {
+      font-size: 2.8rem;
       color: var(--main-color);
-      text-shadow: 0 0 8px rgba(0,0,0,0.2);
-      animation: shine 2s infinite alternate;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    .page-subtitle {
-      font-size: 1.2em;
-      color: #666;
-      max-width: 800px;
-      margin: 0 auto 20px;
+    .page-title p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--text-dark);
     }
 
-    @keyframes shine {
-      0% { text-shadow: 0 0 8px rgba(0,0,0,0.2); }
-      100% { text-shadow: 0 0 18px rgba(0,0,0,0.3); }
+    .night-mode .page-title p {
+      color: var(--text-light);
     }
 
-    /* محتوى الصفحات */
-    .page-content {
-      display: none;
-    }
-
-    .page-content.active {
+    .page-title::after {
+      content: '';
       display: block;
-      animation: fadeIn 0.5s;
+      width: 100px;
+      height: 4px;
+      background: var(--accent-color);
+      margin: 20px auto;
+      border-radius: 2px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* بطاقات المودات */
+    /* شبكة المودات */
     .mods-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
       margin-top: 30px;
     }
 
     .mod-card {
-      background: #f9f9f9;
-      border: 2px solid var(--accent-color);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      background: var(--card-bg);
+      border-radius: 15px;
       overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-align: center;
-    }
-
-    .mod-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-
-    .mod-card.naruto {
-      border-color: var(--naruto-color);
-    }
-
-    .mod-card.dragonball {
-      border-color: var(--dragonball-color);
-    }
-
-    .mod-card img {
-      max-width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      border: 2px solid #ddd;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .mod-card h2 {
-      margin: 0 0 10px;
-      color: var(--main-color);
-      font-size: 1.5em;
-    }
-
-    .mod-card.naruto h2 {
-      color: var(--naruto-color);
-    }
-
-    .mod-card.dragonball h2 {
-      color: var(--dragonball-color);
-    }
-
-    .mod-card p {
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .download-btn {
-      display: inline-block;
-      background-color: var(--accent-color);
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    }
-
-    .download-btn:hover {
-      background-color: #388e3c;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 8px rgba(0,0,0,0.3);
-    }
-
-    .naruto .download-btn {
-      background-color: var(--naruto-color);
-    }
-
-    .dragonball .download-btn {
-      background-color: var(--dragonball-color);
-    }
-
-    /* الوضع الليلي */
-    .night-mode {
-      background-color: var(--dark-bg);
-      color: #eee;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: var(--transition);
+      position: relative;
+      cursor: pointer;
     }
 
     .night-mode .mod-card {
-      background-color: #1e1e1e;
+      background: #1e1e1e;
     }
 
-    .night-mode .mod-card img {
-      border-color: #444;
+    .mod-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .night-mode .download-btn {
-      color: #fff;
+    .mod-card-image {
+      height: 200px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
     }
 
-    .toggle-night {
-      position: fixed;
-      top: 80px;
-      left: 10px;
+    .mod-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .mod-card:hover .mod-card-image img {
+      transform: scale(1.1);
+    }
+
+    .mod-card-content {
+      padding: 20px;
+    }
+
+    .mod-card-title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .night-mode .mod-card-title {
+      color: var(--text-light);
+    }
+
+    .mod-card-desc {
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .night-mode .mod-card-desc {
+      color: #aaa;
+    }
+
+    .mod-card-btn {
+      display: inline-block;
       background: var(--accent-color);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      padding: 8px 16px;
-      cursor: pointer;
-      z-index: 999;
-      font-weight: bold;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .toggle-night:hover {
-      background-color: #2e7d32;
+    .mod-card-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      background: #388e3c;
     }
 
-    /* تصميم متجاوب للجوال */
+    /* ألوان المودات */
+    .onepiece .mod-card-title {
+      color: var(--onepiece-color);
+    }
+
+    .naruto .mod-card-title {
+      color: var(--naruto-color);
+    }
+
+    .dragonball .mod-card-title {
+      color: var(--dragonball-color);
+    }
+
+    .onepunch .mod-card-title {
+      color: var(--onepunch-color);
+    }
+
+    .aot .mod-card-title {
+      color: var(--aot-color);
+    }
+
+    .demonslayer .mod-card-title {
+      color: var(--demonslayer-color);
+    }
+
+    .hxh .mod-card-title {
+      color: var(--hxh-color);
+    }
+
+    .bleach .mod-card-title {
+      color: var(--bleach-color);
+    }
+
+    .jojo .mod-card-title {
+      color: var(--jojo-color);
+    }
+
+    .fairytail .mod-card-title {
+      color: var(--fairytail-color);
+    }
+
+    /* فوتر الصفحة */
+    footer {
+      background: linear-gradient(135deg, #2c3e50, #1a1a2e);
+      color: white;
+      padding: 40px 0 20px;
+      margin-top: 60px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent-color);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-color);
+      transform: translateX(5px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--accent-color);
+      transform: translateY(-5px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* تصميم متجاوب */
+    @media (max-width: 992px) {
+      .mods-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+
     @media (max-width: 768px) {
-      .nav-container {
+      .header-container {
         flex-direction: column;
+        gap: 20px;
       }
       
       .nav-links {
-        margin-top: 15px;
         flex-wrap: wrap;
         justify-content: center;
       }
       
-      .nav-links li {
-        margin: 5px;
-      }
-      
-      header h1 {
-        font-size: 1.8em;
+      .page-title h1 {
+        font-size: 2.2rem;
       }
       
       .mods-grid {
         grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 30px auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text {
+        font-size: 1.8rem;
       }
       
-      .toggle-night {
-        top: 15px;
-        left: 15px;
+      .nav-links {
+        gap: 10px;
+      }
+      
+      .nav-links a {
+        padding: 6px 12px;
+        font-size: 1rem;
+      }
+      
+      .page-title h1 {
+        font-size: 1.8rem;
       }
     }
   </style>
 </head>
 <body>
-
-  <button class="toggle-night" onclick="toggleMode()">🌙</button>
-
-  <!-- شريط التنقل -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="#" class="logo" onclick="showPage('home')">
-        <span class="logo-icon">🎮</span> M.S MOD
-      </a>
+  <!-- الهيدر -->
+  <header>
+    <div class="header-container">
+      <div class="logo-container">
+        <div class="logo-img">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="logo-text">M.S <span>MOD</span></div>
+      </div>
       
       <ul class="nav-links">
-        <li><a href="#" class="active" onclick="showPage('home')">الرئيسية</a></li>
-        <li><a href="#" onclick="showPage('onepiece')">ون بيس</a></li>
-        <li><a href="#" onclick="showPage('naruto')">ناروتو</a></li>
-        <li><a href="#" onclick="showPage('dragonball')">دراغون بول</a></li>
+        <li><a href="#"><i class="fas fa-home"></i> الرئيسية</a></li>
+        <li><a href="#"><i class="fas fa-download"></i> التحميلات</a></li>
+        <li><a href="#"><i class="fas fa-info-circle"></i> حول الموقع</a></li>
+        <li><a href="#"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
       </ul>
+      
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
     </div>
-  </nav>
-
+  </header>
+  
+  <!-- محتوى الصفحة -->
   <div class="container">
-    <!-- الصفحة الرئيسية -->
-    <div id="home" class="page-content active">
-      <header>
-        <h1>مرحبًا بكم في M.S MOD</h1>
-        <p class="page-subtitle">استمتع بأفضل مودات الأنيمي لماين كرافت! اختر من بين مجموعة المودات الرائعة لدينا</p>
-      </header>
-      
-      <div class="mods-grid">
-        <div class="mod-card" onclick="showPage('onepiece')">
+    <div class="page-title">
+      <h1>أفضل مودات الأنيمي لماين كرافت</h1>
+      <p>استمتع بتجربة فريدة مع شخصيات أنيميك المفضلة في عالم ماين كرافت! حمل الآن أحدث المودات وأكثرها تميزًا</p>
+    </div>
+    
+    <!-- شبكة المودات -->
+    <div class="mods-grid">
+      <!-- مود ون بيس -->
+      <div class="mod-card onepiece" onclick="showModDetails('onepiece')">
+        <div class="mod-card-image">
           <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس">
-          <h2>مود ون بيس</h2>
-          <p>استمتع بتجربة عالم ون بيس داخل ماين كرافت مع شخصيات مثل لوفي، زورو، كايدو، بيغ مام، فواكه الشيطان، والسيوف الأسطورية.</p>
-          <a class="download-btn" href="#">تصفح المود</a>
         </div>
-        
-        <div class="mod-card naruto" onclick="showPage('naruto')">
+        <div class="mod-card-content">
+          <h3 class="mod-card-title">مود ون بيس</h3>
+          <p class="mod-card-desc">
+            استمتع بتجربة عالم ون بيس داخل ماين كرافت مع شخصيات مثل لوفي، زورو، كايدو، بيغ مام، فواكه الشيطان، والسيوف الأسطورية.
+          </p>
+          <a href="#" class="mod-card-btn">تحميل المود</a>
+        </div>
+      </div>
+      
+      <!-- مود ناروتو -->
+      <div class="mod-card naruto" onclick="showModDetails('naruto')">
+        <div class="mod-card-image">
           <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود ناروتو">
-          <h2>مود ناروتو</h2>
-          <p>انضم إلى قرية الورق وتعلم الجوتسو! يضم المود شخصيات ناروتو، ساسكي، كاكاشي، وتقنيات الشاكرا المختلفة.</p>
-          <a class="download-btn" href="#">تصفح المود</a>
         </div>
-        
-        <div class="mod-card dragonball" onclick="showPage('dragonball')">
+        <div class="mod-card-content">
+          <h3 class="mod-card-title">مود ناروتو</h3>
+          <p class="mod-card-desc">
+            انضم إلى قرية الورق وتعلم الجوتسو! يضم المود شخصيات ناروتو، ساسكي، كاكاشي، وتقنيات الشاكرا المختلفة.
+          </p>
+          <a href="#" class="mod-card-btn">تحميل المود</a>
+        </div>
+      </div>
+      
+      <!-- مود دراغون بول -->
+      <div class="mod-card dragonball" onclick="showModDetails('dragonball')">
+        <div class="mod-card-image">
           <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود دراغون بول">
-          <h2>مود دراغون بول</h2>
-          <p>اصبح سايان وانطلق في رحلات عبر الكون! يضم المود شخصيات جوكو، فيجيتا، بيروس، وتقنيات الكي الشهيرة.</p>
-          <a class="download-btn" href="#">تصفح المود</a>
+        </div>
+        <div class="mod-card-content">
+          <h3 class="mod-card-title">مود دراغون بول</h3>
+          <p class="mod-card-desc">
+            اصبح سايان وانطلق في رحلات عبر الكون! يضم المود شخصيات جوكو، فيجيتا، بيروس، وتقنيات الكي الشهيرة.
+          </p>
+          <a href="#" class="mod-card-btn">تحميل المود</a>
         </div>
       </div>
-    </div>
-    
-    <!-- صفحة ون بيس -->
-    <div id="onepiece" class="page-content">
-      <header>
-        <h1>مود ون بيس - M.S MOD</h1>
-        <p class="page-subtitle">استمتع بتجربة عالم ون بيس داخل ماين كرافت</p>
-      </header>
       
-      <div class="mod-card">
-        <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس">
-        <h2>مود ون بيس لماين كرافت</h2>
-        <p>
-          استمتع بتجربة عالم ون بيس داخل ماين كرافت! يضم المود شخصيات مثل لوفي، زورو، كايدو، بيغ مام، فواكه الشيطان، السيوف، والقدرات الأسطورية.
-          <br><br>
-          مميزات المود:
-        </p>
-        <ul style="text-align: right; padding-right: 20px;">
-          <li>أكثر من 20 شخصية من عالم ون بيس</li>
-          <li>15 نوعًا من فواكه الشيطان</li>
-          <li>أنظمة قتال متقدمة</li>
-          <li>سفن قراصنة قابلة للبناء</li>
-          <li>أزياء وشخصيات قابلة للتخصيص</li>
-        </ul>
-        <a class="download-btn" href="https://www.mediafire.com/file/abc123/onepiece-mod.apk/file">تحميل المود</a>
+      <!-- مود ون بانش مان -->
+      <div class="mod-card onepunch" onclick="showModDetails('onepunch')">
+        <div class="mod-card-image">
+          <img src="https://i.postimg.cc/7Yp6FJNx/onepunch-man-mod.jpg" alt="مود ون بانش مان">
+        </div>
+        <div class="mod-card-content">
+          <h3 class="mod-card-title">مود ون بانش مان</h3>
+          <p class="mod-card-desc">
+            كن البطل الذي يحتاجه العالم! يضم المود شخصيات سايتاما، جينوس، جارو، وقوة الضربة الواحدة.
+          </p>
+          <a href="#" class="mod-card-btn">تحميل المود</a>
+        </div>
       </div>
-    </div>
-    
-    <!-- صفحة ناروتو -->
-    <div id="naruto" class="page-content">
-      <header>
-        <h1>مود ناروتو - M.S MOD</h1>
-        <p class="page-subtitle">انضم إلى قرية الورق وتعلم الجوتسو!</p>
-      </header>
       
-      <div class="mod-card naruto">
-        <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود ناروتو">
-        <h2>مود ناروتو لماين كرافت</h2>
-        <p>
-          انضم إلى عالم النينجا وتعلم تقنيات الشاكرا! يضم المود شخصيات ناروتو، ساسكي، كاكاشي، ساكورا، وغيرهم من الشخصيات المحبوبة.
-          <br><br>
-          مميزات المود:
-        </p>
-        <ul style="text-align: right; padding-right: 20px;">
-          <li>شخصيات من جميع القرى الخفية</li>
-          <li>أكثر من 50 تقنية جوتسو مختلفة</li>
-          <li>أنظمة الشاكرا والطاقات الخاصة</li>
-          <li>أسلحة النينجا والشنبوريكن</li>
-          <li>قرى خفية قابلة للاستكشاف</li>
-        </ul>
-        <a class="download-btn" href="#">تحميل المود</a>
+      <!-- مود هجوم العمالقة -->
+      <div class="mod-card aot" onclick="showModDetails('aot')">
+        <div class="mod-card-image">
+          <img src="https://i.postimg.cc/J4f2x5dL/aot-mod.jpg" alt="مود هجوم العمالقة">
+        </div>
+        <div class="mod-card-content">
+          <h3 class="mod-card-title">مود هجوم العمالقة</h3>
+          <p class="mod-card-desc">
+            انضم إلى فيلق الاستطلاع وحارب العمالقة! يضم المود معدات المناورة ثلاثية الأبعاد، عمالقة، وإرين.
+          </p>
+          <a href="#" class="mod-card-btn">تحميل المود</a>
+        </div>
       </div>
-    </div>
-    
-    <!-- صفحة دراغون بول -->
-    <div id="dragonball" class="page-content">
-      <header>
-        <h1>مود دراغون بول - M.S MOD</h1>
-        <p class="page-subtitle">اصبح سايان وانطلق في رحلات عبر الكون!</p>
-      </header>
       
-      <div class="mod-card dragonball">
-        <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود دراغون بول">
-        <h2>مود دراغون بول لماين كرافت</h2>
-        <p>
-          استكشف عالم دراغون بول وقاتل أقوى الأعداء! يضم المود شخصيات جوكو، فيجيتا، بيروس، ومايستر شينرون.
-          <br><br>
-          مميزات المود:
-        </p>
-        <ul style="text-align: right; padding-right: 20px;">
-          <li>تحولات السايان المختلفة</li>
-          <li>تقنيات الكي الشهيرة (كاميهاها، جينكي دم، إلخ)</li>
-          <li>نظام قوة القتال والتدريب</li>
-          <li>كائنات دراغون بول السبعة</li>
-          <li>كايوكن وفتح العين الثالثة</li>
-        </ul>
-        <a class="download-btn" href="#">تحميل المود</a>
+      <!-- مود قاتل الشياطين -->
+      <div class="mod-card demonslayer" onclick="showModDetails('demonslayer')">
+        <div class="mod-card-image">
+          <img src="https://i.postimg.cc/0QjCQw5T/demonslayer-mod.jpg" alt="مود قاتل الشياطين">
+        </div>
+        <div class="mod-card-content">
+          <h3 class="mod-card-title">مود قاتل الشياطين</h3>
+          <p class="mod-card-desc">
+            اصبح قاتل شياطين وانضم إلى فيلق القتلة! يضم المود شخصيات تانجيرو، نيزوكو، زينيتسو، وتقنيات التنفس.
+          </p>
+          <a href="#" class="mod-card-btn">تحميل المود</a>
+        </div>
+      </div>
+      
+      <!-- مود هنتر x هنتر -->
+      <div class="mod-card hxh" onclick="showModDetails('hxh')">
+        <div class="mod-card-image">
+          <img src="https://i.postimg.cc/8zqLv1fT/hxh-mod.jpg" alt="مود هنتر x هنتر">
+        </div>
+        <div class="mod-card-content">
+          <h3 class="mod-card-title">مود هنتر x هنتر</h3>
+          <p class="mod-card-desc">
+            اصبح هنتر وابحث عن الكنوز! يضم المود نظام النين، شخصيات غون، كيلوا، هيسوكا، وتحديات الامتحان.
+          </p>
+          <a href="#" class="mod-card-btn">تحميل المود</a>
+        </div>
+      </div>
+      
+      <!-- مود بليتش -->
+      <div class="mod-card bleach" onclick="showModDetails('bleach')">
+        <div class="mod-card-image">
+          <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود بليتش">
+        </div>
+        <div class="mod-card-content">
+          <h3 class="mod-card-title">مود بليتش</h3>
+          <p class="mod-card-desc">
+            اصبح شينيغامي وقاتل الأرواح الشريرة! يضم المود شخصيات إيتشيغو، روكيا، بيوكيا، وتقنيات البانكاي.
+          </p>
+          <a href="#" class="mod-card-btn">تحميل المود</a>
+        </div>
+      </div>
+      
+      <!-- مود جوجو -->
+      <div class="mod-card jojo" onclick="showModDetails('jojo')">
+        <div class="mod-card-image">
+          <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود جوجو">
+        </div>
+        <div class="mod-card-content">
+          <h3 class="mod-card-title">مود جوجو</h3>
+          <p class="mod-card-desc">
+            استخدم الستاند وقاتل الأعداء! يضم المود شخصيات جوتارو، ديو، جوزيف، وقدرات الستاند الفريدة.
+          </p>
+          <a href="#" class="mod-card-btn">تحميل المود</a>
+        </div>
+      </div>
+      
+      <!-- مود فيري تيل -->
+      <div class="mod-card fairytail" onclick="showModDetails('fairytail')">
+        <div class="mod-card-image">
+          <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود فيري تيل">
+        </div>
+        <div class="mod-card-content">
+          <h3 class="mod-card-title">مود فيري تيل</h3>
+          <p class="mod-card-desc">
+            انضم إلى نقابة فيري تيل واستخدم السحر! يضم المود شخصيات ناتس، لوسي، إيرزا، وأنواع السحر المختلفة.
+          </p>
+          <a href="#" class="mod-card-btn">تحميل المود</a>
+        </div>
       </div>
     </div>
   </div>
-
+  
+  <!-- الفوتر -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>عن M.S MOD</h3>
+        <p>نقدم أفضل مودات الأنيمي لماين كرافت بجودة عالية وتحديثات مستمرة. تجارب جديدة وشيقة تنتظرك!</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>روابط سريعة</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-arrow-left"></i> الرئيسية</a></li>
+          <li><a href="#"><i class="fas fa-arrow-left"></i> أحدث المودات</a></li>
+          <li><a href="#"><i class="fas fa-arrow-left"></i> شروحات التثبيت</a></li>
+          <li><a href="#"><i class="fas fa-arrow-left"></i> الدعم الفني</a></li>
+          <li><a href="#"><i class="fas fa-arrow-left"></i> سياسة الخصوصية</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>اتصل بنا</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-envelope"></i> info@msmod.com</a></li>
+          <li><a href="#"><i class="fab fa-discord"></i> Discord Server</a></li>
+          <li><a href="#"><i class="fab fa-telegram"></i> Telegram Channel</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; 2023 M.S MOD - جميع الحقوق محفوظة
+    </div>
+  </footer>
+  
   <script>
     // تبديل الوضع الليلي
-    function toggleMode() {
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('night-mode');
-    }
-    
-    // تبديل الصفحات
-    function showPage(pageId) {
-      // إخفاء كل الصفحات
-      document.querySelectorAll('.page-content').forEach(page => {
-        page.classList.remove('active');
-      });
       
-      // إظهار الصفحة المطلوبة
-      document.getElementById(pageId).classList.add('active');
-      
-      // تحديث قائمة التنقل
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-      });
-      
-      // تحديد العنصر النشط في القائمة
-      if(pageId === 'home') {
-        document.querySelector('.nav-links a[onclick*="home"]').classList.add('active');
-      } else if(pageId === 'onepiece') {
-        document.querySelector('.nav-links a[onclick*="onepiece"]').classList.add('active');
-      } else if(pageId === 'naruto') {
-        document.querySelector('.nav-links a[onclick*="naruto"]').classList.add('active');
-      } else if(pageId === 'dragonball') {
-        document.querySelector('.nav-links a[onclick*="dragonball"]').classList.add('active');
+      if(document.body.classList.contains('night-mode')) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        themeToggle.title = 'الوضع النهاري';
+      } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        themeToggle.title = 'الوضع الليلي';
       }
+    });
+    
+    // عرض تفاصيل المود
+    function showModDetails(modId) {
+      alert(`تفاصيل مود ${modId}`);
+      // يمكن استبدال هذه الدالة بفتح صفحة تفاصيل أو نافذة منبثقة
     }
   </script>
 </body>
-          </html>
+  </html>
