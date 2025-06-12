@@ -52,15 +52,18 @@
       margin-bottom: 30px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       overflow: hidden;
+      text-align: center; /* توسيط المحتوى */
     }
 
     .mod-card img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  display: block;
+      max-width: 600px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 15px;
+      border-radius: 12px;
+      border: 2px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .mod-card h2 {
@@ -80,11 +83,14 @@
       border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
-      transition: background-color 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     }
 
     .download-btn:hover {
       background-color: #388e3c;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 8px rgba(0,0,0,0.3);
     }
 
     .night-mode {
@@ -95,6 +101,10 @@
     .night-mode .mod-card {
       background-color: #1e1e1e;
       border-color: var(--main-color);
+    }
+
+    .night-mode .mod-card img {
+      border-color: #444;
     }
 
     .night-mode .download-btn {
@@ -113,10 +123,26 @@
       cursor: pointer;
       z-index: 999;
       font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .toggle-night:hover {
       background-color: #2e7d32;
+    }
+
+    /* تصميم متجاوب للجوال */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+      
+      .mod-card img {
+        max-width: 90%;
+      }
+      
+      .container {
+        padding: 15px;
+      }
     }
   </style>
 </head>
@@ -130,16 +156,18 @@
     </header>
 
     <div class="mod-card">
-      <!-- ✅ الصورة مضافة هنا -->
-      <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس" />
+      <!-- الصورة المعدلة -->
+      <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" 
+           alt="مود ون بيس"
+           width="600"
+           height="400">
 
       <h2>مود ون بيس لماين كرافت</h2>
       <p>
         استمتع بتجربة عالم ون بيس داخل ماين كرافت! يضم المود شخصيات مثل لوفي، زورو، كايدو، بيغ مام، فواكه الشيطان، السيوف، والقدرات الأسطورية.
       </p>
 
-      <!-- ✅ ضع هنا رابط التحميل الحقيقي -->
-      <a class="download-btn" href="https://t.me/ms00bot">تحميل المود</a>
+      <a class="download-btn" href="https://www.mediafire.com/file/abc123/onepiece-mod.apk/file">تحميل المود</a>
     </div>
   </div>
 
