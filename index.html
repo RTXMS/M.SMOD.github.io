@@ -343,27 +343,60 @@
     }
 
     .mod-card-image {
-      height: 250px;
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f0f0f0;
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px 15px 0 0;
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  
     }
 
-    .mod-card-image:not(.loaded)::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-      opacity: 0.7;
+    /* تأثير اللمعة أثناء التحميل */
+.mod-card-image:not(.loaded)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shine 1.5s infinite;
+  z-index: 1;
+}
+
+/* تأثير اللمعة عند التحويم (لصور محملة) */
+.mod-card.loaded .mod-card-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shine 3s infinite;
+  z-index: 1;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  20% { left: 100%; }
+  100% { left: 100%; }
+  }
     }
 
     @keyframes loading {
@@ -372,13 +405,13 @@
     }
 
     .mod-card-image img {
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      transition: var(--transition);
-    }
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: var(--transition);
+      }
 
     .mod-card:hover .mod-card-image img {
       transform: scale(1.05);
