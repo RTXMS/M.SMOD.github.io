@@ -1,170 +1,269 @@
-<!DOCTYPE html><html lang="ar">
+<!DOCTYPE html>
+<html lang="ar">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>مودات ون بيس - M.S MOD</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --main-color: #e53935;
       --accent-color: #43a047;
       --dark-bg: #121212;
       --light-bg: #ffffff;
-    }body {
-  margin: 0;
-  font-family: 'Cairo', sans-serif;
-  background-color: var(--light-bg);
-  color: #333;
-  transition: background-color 0.3s, color 0.3s;
-}
+    }
 
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 20px;
-}
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--light-bg);
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
 
-header h1 {
-  font-size: 2.5em;
-  color: var(--main-color);
-  text-shadow: 0 0 8px var(--accent-color);
-  animation: shine 2s infinite alternate;
-}
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-@keyframes shine {
-  0% { text-shadow: 0 0 8px var(--accent-color); }
-  100% { text-shadow: 0 0 18px var(--main-color); }
-}
+    header h1 {
+      font-size: 2.5em;
+      color: var(--main-color);
+      text-shadow: 0 0 8px var(--accent-color);
+      animation: shine 2s infinite alternate;
+    }
 
-.mod-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
+    @keyframes shine {
+      0% { text-shadow: 0 0 8px var(--accent-color); }
+      100% { text-shadow: 0 0 18px var(--main-color); }
+    }
 
-.mod-card {
-  background: #f9f9f9;
-  border: 2px solid var(--accent-color);
-  border-radius: 16px;
-  padding: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
+    .mod-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
 
-.mod-card:hover {
-  transform: scale(1.03);
-}
+    .mod-card {
+      background: #f9f9f9;
+      border: 2px solid var(--accent-color);
+      border-radius: 16px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
 
-.mod-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  border: 2px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+    .mod-card:hover {
+      transform: scale(1.02);
+    }
 
-.mod-card h2 {
-  margin: 10px 0;
-  color: var(--main-color);
-}
+    .mod-card img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #ddd;
+    }
 
-.mod-card .rating {
-  color: gold;
-  font-size: 1.2em;
-}
+    .mod-card h2 {
+      color: var(--main-color);
+      font-size: 1.2em;
+      margin: 10px 0 5px;
+    }
 
-.mod-card .downloads {
-  font-size: 0.9em;
-  color: #666;
-}
+    .mod-card p {
+      font-size: 0.9em;
+      margin: 5px 0 10px;
+    }
 
-.mod-card a {
-  display: inline-block;
-  margin-top: 10px;
-  background-color: var(--accent-color);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
+    .view-btn {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
 
-.mod-card a:hover {
-  background-color: #2e7d32;
-}
+    .view-btn:hover {
+      background-color: #388e3c;
+    }
 
-.night-mode {
-  background-color: var(--dark-bg);
-  color: #eee;
-}
+    .rating {
+      color: gold;
+      margin-top: 5px;
+      font-size: 1.1em;
+    }
 
-.night-mode .mod-card {
-  background-color: #1e1e1e;
-  border-color: var(--main-color);
-}
+    .downloads {
+      font-size: 0.85em;
+      color: #777;
+    }
 
-.night-mode .mod-card img {
-  border-color: #444;
-}
+    .toggle-night {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: var(--accent-color);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 16px;
+      cursor: pointer;
+      z-index: 999;
+      font-weight: bold;
+    }
 
-.toggle-night {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  background: var(--accent-color);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 8px 16px;
-  cursor: pointer;
-  z-index: 999;
-  font-weight: bold;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
+    .night-mode {
+      background-color: var(--dark-bg);
+      color: #eee;
+    }
 
-.toggle-night:hover {
-  background-color: #2e7d32;
-}
+    .night-mode .mod-card {
+      background-color: #1e1e1e;
+      border-color: var(--main-color);
+    }
 
+    .night-mode .mod-card img {
+      border-color: #444;
+    }
+
+    .night-mode .view-btn {
+      background-color: var(--main-color);
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+    }
   </style>
 </head>
-<body><button class="toggle-night" onclick="toggleMode()">🌙</button>
+<body>
+
+  <button class="toggle-night" onclick="toggleMode()">🌙</button>
 
   <div class="container">
     <header>
       <h1>مودات ون بيس - M.S MOD</h1>
-    </header><div class="mod-grid">
-  <!-- كرر الكرت لـ 10 مودات -->
-  <div class="mod-card">
-    <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود 1">
-    <h2>مود ون بيس 1</h2>
-    <div class="rating">⭐⭐⭐⭐⭐</div>
-    <div class="downloads">2500 تحميل</div>
-    <a href="mod1.html">عرض المود</a>
+    </header>
+
+    <div class="mod-grid">
+
+      <!-- مود 1 -->
+      <div class="mod-card">
+        <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود 1" />
+        <h2>مود لوفي الجير الخامس</h2>
+        <p>قاتل كايدو باستخدام قدرات خارقة وعالم ضخم.</p>
+        <div class="rating">⭐⭐⭐⭐☆</div>
+        <div class="downloads">2.1K تنزيل</div>
+        <a class="view-btn" href="onepiece1.html">عرض المود</a>
+      </div>
+
+      <!-- مود 2 -->
+      <div class="mod-card">
+        <img src="ضع_رابط_الصورة" alt="مود 2" />
+        <h2>طاقم اللحية البيضاء</h2>
+        <p>اللحية البيضاء، ايس، ماركو، وسيوف أسطورية.</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <div class="downloads">1.6K تنزيل</div>
+        <a class="view-btn" href="onepiece2.html">عرض المود</a>
+      </div>
+
+      <!-- مود 3 -->
+      <div class="mod-card">
+        <img src="ضع_رابط_الصورة" alt="مود 3" />
+        <h2>زورو والسيوف الثلاثة</h2>
+        <p>زورو وتقنيات قتال مذهلة بالسيوف.</p>
+        <div class="rating">⭐⭐⭐⭐☆</div>
+        <div class="downloads">1.2K تنزيل</div>
+        <a class="view-btn" href="onepiece3.html">عرض المود</a>
+      </div>
+
+      <!-- باقي المودات (من 4 إلى 10) -->
+      <!-- انسخ الكتلة وغيّر الاسم والرابط والتقييم لكل مود -->
+
+      <div class="mod-card">
+        <img src="ضع_رابط_الصورة" alt="مود 4" />
+        <h2>مود فواكه الشيطان</h2>
+        <p>أكثر من 15 فاكهة شيطان قابلة للاستخدام.</p>
+        <div class="rating">⭐⭐⭐☆☆</div>
+        <div class="downloads">980 تنزيل</div>
+        <a class="view-btn" href="onepiece4.html">عرض المود</a>
+      </div>
+
+      <div class="mod-card">
+        <img src="ضع_رابط_الصورة" alt="مود 5" />
+        <h2>لوفي ضد روب لوتشي</h2>
+        <p>أجواء قتال خرافي في الـ Enies Lobby.</p>
+        <div class="rating">⭐⭐⭐⭐☆</div>
+        <div class="downloads">1.1K تنزيل</div>
+        <a class="view-btn" href="onepiece5.html">عرض المود</a>
+      </div>
+
+      <div class="mod-card">
+        <img src="ضع_رابط_الصورة" alt="مود 6" />
+        <h2>مود بيغ مام</h2>
+        <p>التحكم ببيغ مام وقواها المرعبة!</p>
+        <div class="rating">⭐⭐⭐☆☆</div>
+        <div class="downloads">850 تنزيل</div>
+        <a class="view-btn" href="onepiece6.html">عرض المود</a>
+      </div>
+
+      <div class="mod-card">
+        <img src="ضع_رابط_الصورة" alt="مود 7" />
+        <h2>كايدو التنين</h2>
+        <p>تحول التنين الضخم ومهارات تدميرية.</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <div class="downloads">1.8K تنزيل</div>
+        <a class="view-btn" href="onepiece7.html">عرض المود</a>
+      </div>
+
+      <div class="mod-card">
+        <img src="ضع_رابط_الصورة" alt="مود 8" />
+        <h2>مود البحرية CP0</h2>
+        <p>أعداء أقوياء من منظمة CP0 بمهارات خاصة.</p>
+        <div class="rating">⭐⭐⭐☆☆</div>
+        <div class="downloads">790 تنزيل</div>
+        <a class="view-btn" href="onepiece8.html">عرض المود</a>
+      </div>
+
+      <div class="mod-card">
+        <img src="ضع_رابط_الصورة" alt="مود 9" />
+        <h2>شانكس السياف الأسطوري</h2>
+        <p>قاتل بشانكس واستعمل هاكي الملكي!</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <div class="downloads">2.4K تنزيل</div>
+        <a class="view-btn" href="onepiece9.html">عرض المود</a>
+      </div>
+
+      <div class="mod-card">
+        <img src="ضع_رابط_الصورة" alt="مود 10" />
+        <h2>الجيش الثوري ودراغون</h2>
+        <p>تجربة فريدة مع دراغون وجيشه الثوري.</p>
+        <div class="rating">⭐⭐⭐⭐☆</div>
+        <div class="downloads">1.3K تنزيل</div>
+        <a class="view-btn" href="onepiece10.html">عرض المود</a>
+      </div>
+
+    </div>
   </div>
 
-  <div class="mod-card">
-    <img src="ضع_رابط_الصورة_هنا" alt="مود 2">
-    <h2>مود ون بيس 2</h2>
-    <div class="rating">⭐⭐⭐☆☆</div>
-    <div class="downloads">1500 تحميل</div>
-    <a href="mod2.html">عرض المود</a>
-  </div>
-
-  <!-- كرر بنفس الطريقة حتى مود 10 -->
-</div>
-
-  </div>  <script>
+  <script>
     function toggleMode() {
       document.body.classList.toggle('night-mode');
     }
-  </script></body>
-</html>
+  </script>
+
+</body>
+          </html>
