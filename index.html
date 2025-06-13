@@ -343,22 +343,27 @@
     }
 
     .mod-card-image {
-  height: 250px;        /* نفس الارتفاع */
-  width: 100%;
-  display: flex;        /* جديد */
-  justify-content: center; /* جديد */
-  align-items: center;  /* جديد */
-  background-color: #f1f1f1; /* جديد */
-  overflow: visible;    /* كان hidden */
-}
+      height: 250px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f0f0;
+    }
 
-.mod-card-image img {
-  max-width: 100%;      /* كان width: 100% */
-  max-height: 100%;     /* كان height: 100% */
-  object-fit: contain;  /* كان cover */
-  width: auto;          /* جديد */
-  height: auto;         /* جديد */
-      }
+    .mod-card-image:not(.loaded)::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      opacity: 0.7;
     }
 
     @keyframes loading {
@@ -367,14 +372,16 @@
     }
 
     .mod-card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
       transition: var(--transition);
     }
 
     .mod-card:hover .mod-card-image img {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     .mod-card-content {
@@ -529,12 +536,18 @@
       overflow: hidden;
       margin-bottom: 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f0f0;
     }
 
     .main-mod-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
       transition: var(--transition);
     }
 
@@ -554,6 +567,10 @@
       overflow: hidden;
       cursor: pointer;
       transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f0f0;
     }
 
     .gallery-image:hover {
@@ -562,9 +579,11 @@
     }
 
     .gallery-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
     }
 
     .mod-details-info {
@@ -985,7 +1004,7 @@
         <!-- المود 1 -->
         <div class="mod-card" onclick="showModDetails('mod1')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/pdKsB1bn/55-20250612092314.png" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -997,7 +1016,7 @@
         <!-- المود 2 -->
         <div class="mod-card" onclick="showModDetails('mod2')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/PJ5KTXLm/54-20250606091239.png" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1009,7 +1028,7 @@
         <!-- المود 3 -->
         <div class="mod-card" onclick="showModDetails('mod3')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/Y0DRS5gT/51-20250524231413.png" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1021,7 +1040,7 @@
         <!-- المود 4 -->
         <div class="mod-card" onclick="showModDetails('mod4')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/L4xNv17v/49-20250510213732.png" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
