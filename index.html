@@ -343,49 +343,42 @@
     }
 
     .mod-card-image {
-    .mod-card-image {
-  height: 250px;
-  width: 250px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f0f0f0;
-  border-radius: 8px; /* تغيير من 50% إلى 8px للحواف الناعمة */
-  margin: 15px auto;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  /* إزالة border: 5px solid white */
-}
+      height: 250px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f0f0;
+    }
 
-.mod-card-image:not(.loaded)::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
-  opacity: 0.7;
-  border-radius: 8px; /* إضافة لتتناسب مع التصميم الجديد */
-}
+    .mod-card-image:not(.loaded)::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      opacity: 0.7;
+    }
 
-@keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
 
-.mod-card-image img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: var(--transition);
-  border-radius: 6px; /* إضافة حواف ناعمة للصورة */
-      }
+    .mod-card-image img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: var(--transition);
+    }
 
     .mod-card:hover .mod-card-image img {
       transform: scale(1.05);
@@ -395,7 +388,6 @@
       padding: 20px;
       position: relative;
       z-index: 2;
-      text-align: center;
     }
 
     .mod-card-title {
