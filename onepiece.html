@@ -43,7 +43,7 @@ header h1 {
 
 .mod-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
 
@@ -52,49 +52,53 @@ header h1 {
   border: 2px solid var(--accent-color);
   border-radius: 16px;
   padding: 15px;
-  text-align: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
 .mod-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transform: scale(1.03);
 }
 
 .mod-card img {
-  max-width: 90%;
+  width: 100%;
   height: auto;
-  margin-bottom: 15px;
   border-radius: 12px;
   border: 2px solid #ddd;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .mod-card h2 {
-  margin: 0 0 10px;
+  margin: 10px 0;
   color: var(--main-color);
 }
 
-.mod-card p {
-  margin-bottom: 20px;
+.mod-card .rating {
+  color: gold;
+  font-size: 1.2em;
 }
 
-.download-btn {
+.mod-card .downloads {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.mod-card a {
   display: inline-block;
+  margin-top: 10px;
   background-color: var(--accent-color);
   color: #fff;
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
 }
 
-.download-btn:hover {
-  background-color: #388e3c;
-  transform: scale(1.05);
+.mod-card a:hover {
+  background-color: #2e7d32;
 }
 
 .night-mode {
@@ -109,10 +113,6 @@ header h1 {
 
 .night-mode .mod-card img {
   border-color: #444;
-}
-
-.night-mode .download-btn {
-  background-color: var(--main-color);
 }
 
 .toggle-night {
@@ -134,16 +134,6 @@ header h1 {
   background-color: #2e7d32;
 }
 
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 1.8em;
-  }
-
-  .container {
-    padding: 15px;
-  }
-}
-
   </style>
 </head>
 <body><button class="toggle-night" onclick="toggleMode()">🌙</button>
@@ -152,30 +142,24 @@ header h1 {
     <header>
       <h1>مودات ون بيس - M.S MOD</h1>
     </header><div class="mod-grid">
-
+  <!-- كرر الكرت لـ 10 مودات -->
   <div class="mod-card">
-    <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس 1" />
-    <h2>مود ون بيس الأسطوري V1</h2>
-    <p>مود يحتوي على فواكه الشيطان، طاقم قبعة القش، ومهارات قتالية رائعة داخل عالم ماين كرافت.</p>
-    <a class="download-btn" href="ضع_رابط_التحميل_هنا">تحميل المود</a>
+    <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود 1">
+    <h2>مود ون بيس 1</h2>
+    <div class="rating">⭐⭐⭐⭐⭐</div>
+    <div class="downloads">2500 تحميل</div>
+    <a href="mod1.html">عرض المود</a>
   </div>
 
   <div class="mod-card">
-    <img src="ضع_رابط_الصورة_هنا" alt="مود ون بيس 2" />
-    <h2>مود طاقم اللحية البيضاء</h2>
-    <p>مود جديد يضم اللحية البيضاء، ايس، ماركو، مع سيوف وفواكه نادرة وتحديات خاصة!</p>
-    <a class="download-btn" href="ضع_رابط_التحميل_هنا">تحميل المود</a>
+    <img src="ضع_رابط_الصورة_هنا" alt="مود 2">
+    <h2>مود ون بيس 2</h2>
+    <div class="rating">⭐⭐⭐☆☆</div>
+    <div class="downloads">1500 تحميل</div>
+    <a href="mod2.html">عرض المود</a>
   </div>
 
-  <div class="mod-card">
-    <img src="ضع_رابط_الصورة_هنا" alt="مود ون بيس 3" />
-    <h2>مود قتال كايدو ضد لوفي</h2>
-    <p>استعد لأقوى معركة بين لوفي وكايدو مع قدرات الجير الخامس وتحول التنين المرعب.</p>
-    <a class="download-btn" href="ضع_رابط_التحميل_هنا">تحميل المود</a>
-  </div>
-
-  <!-- نسخ المودات التالية بنفس التنسيق لزيادة العدد إلى أكثر من 10 -->
-
+  <!-- كرر بنفس الطريقة حتى مود 10 -->
 </div>
 
   </div>  <script>
