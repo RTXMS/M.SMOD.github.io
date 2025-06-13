@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar">
+<!DOCTYPE html><html lang="ar">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,112 +9,178 @@
       --main-color: #e53935;
       --accent-color: #43a047;
       --dark-bg: #121212;
-    }
+      --light-bg: #ffffff;
+    }body {
+  margin: 0;
+  font-family: 'Cairo', sans-serif;
+  background-color: var(--light-bg);
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Cairo', sans-serif;
-      background-color: #fff;
-      color: #333;
-    }
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
 
-    .container {
-      max-width: 960px;
-      margin: auto;
-      padding: 20px;
-    }
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+header h1 {
+  font-size: 2.5em;
+  color: var(--main-color);
+  text-shadow: 0 0 8px var(--accent-color);
+  animation: shine 2s infinite alternate;
+}
 
-    header h1 {
-      font-size: 2.5em;
-      color: var(--main-color);
-    }
+@keyframes shine {
+  0% { text-shadow: 0 0 8px var(--accent-color); }
+  100% { text-shadow: 0 0 18px var(--main-color); }
+}
 
-    .mod-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
+.mod-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
 
-    .mod-card {
-      background: #f9f9f9;
-      border: 2px solid var(--accent-color);
-      border-radius: 14px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+.mod-card {
+  background: #f9f9f9;
+  border: 2px solid var(--accent-color);
+  border-radius: 16px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .mod-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    }
+.mod-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
 
-    .mod-card h2 {
-      font-size: 1.3em;
-      margin-bottom: 10px;
-      color: var(--main-color);
-    }
+.mod-card img {
+  max-width: 90%;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  border: 2px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
-    .mod-card a {
-      display: inline-block;
-      margin-top: 10px;
-      background-color: var(--accent-color);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
+.mod-card h2 {
+  margin: 0 0 10px;
+  color: var(--main-color);
+}
 
-    .mod-card a:hover {
-      background-color: #2e7d32;
-    }
+.mod-card p {
+  margin-bottom: 20px;
+}
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8em;
-      }
-    }
+.download-btn {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.download-btn:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+.night-mode {
+  background-color: var(--dark-bg);
+  color: #eee;
+}
+
+.night-mode .mod-card {
+  background-color: #1e1e1e;
+  border-color: var(--main-color);
+}
+
+.night-mode .mod-card img {
+  border-color: #444;
+}
+
+.night-mode .download-btn {
+  background-color: var(--main-color);
+}
+
+.toggle-night {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  z-index: 999;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.toggle-night:hover {
+  background-color: #2e7d32;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8em;
+  }
+
+  .container {
+    padding: 15px;
+  }
+}
+
   </style>
 </head>
-<body>
+<body><button class="toggle-night" onclick="toggleMode()">🌙</button>
 
   <div class="container">
     <header>
       <h1>مودات ون بيس - M.S MOD</h1>
-    </header>
+    </header><div class="mod-grid">
 
-    <div class="mod-grid">
-
-      <!-- مود رقم 1 -->
-      <div class="mod-card">
-        <h2>مود ون بيس 1</h2>
-        <a href="onepiece-mod1.html">عرض التفاصيل</a>
-      </div>
-
-      <!-- مود رقم 2 -->
-      <div class="mod-card">
-        <h2>مود ون بيس 2</h2>
-        <a href="onepiece-mod2.html">عرض التفاصيل</a>
-      </div>
-
-      <!-- مود رقم 3 -->
-      <div class="mod-card">
-        <h2>مود ون بيس 3</h2>
-        <a href="onepiece-mod3.html">عرض التفاصيل</a>
-      </div>
-
-      <!-- أضف المزيد بنفس الطريقة... -->
-
-    </div>
+  <div class="mod-card">
+    <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس 1" />
+    <h2>مود ون بيس الأسطوري V1</h2>
+    <p>مود يحتوي على فواكه الشيطان، طاقم قبعة القش، ومهارات قتالية رائعة داخل عالم ماين كرافت.</p>
+    <a class="download-btn" href="ضع_رابط_التحميل_هنا">تحميل المود</a>
   </div>
 
-</body>
+  <div class="mod-card">
+    <img src="ضع_رابط_الصورة_هنا" alt="مود ون بيس 2" />
+    <h2>مود طاقم اللحية البيضاء</h2>
+    <p>مود جديد يضم اللحية البيضاء، ايس، ماركو، مع سيوف وفواكه نادرة وتحديات خاصة!</p>
+    <a class="download-btn" href="ضع_رابط_التحميل_هنا">تحميل المود</a>
+  </div>
+
+  <div class="mod-card">
+    <img src="ضع_رابط_الصورة_هنا" alt="مود ون بيس 3" />
+    <h2>مود قتال كايدو ضد لوفي</h2>
+    <p>استعد لأقوى معركة بين لوفي وكايدو مع قدرات الجير الخامس وتحول التنين المرعب.</p>
+    <a class="download-btn" href="ضع_رابط_التحميل_هنا">تحميل المود</a>
+  </div>
+
+  <!-- نسخ المودات التالية بنفس التنسيق لزيادة العدد إلى أكثر من 10 -->
+
+</div>
+
+  </div>  <script>
+    function toggleMode() {
+      document.body.classList.toggle('night-mode');
+    }
+  </script></body>
 </html>
