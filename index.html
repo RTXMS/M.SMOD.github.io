@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>M.S MOD - أفضل مودات الأنيمي لماين كرافت</title>
+  <title>M.S MOD - أفضل مودات الأنمي لماين كرافت</title>
+  <meta name="description" content="M.S MOD - أفضل مودات الأنمي لماين كرافت الجوال، تحميل مودات ون بيس، ناروتو، دراغون بول، جوجيتسو كايسن، قاتل الشياطين">
+  <meta name="keywords" content="ماين كرافت, مودات, MCPE, تحميل مودات, ون بيس, ناروتو, دراغون بول, جوجيتسو كايسن, قاتل الشياطين">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
@@ -20,11 +22,6 @@
       --dragonball: #FFD700;
       --demonslayer: #7209B7;
       --jujutsu: #000000;
-      --aot: #6C757D;
-      --hxh: #FF006E;
-      --bleach: #00B4D8;
-      --jojo: #FF9E00;
-      --fairytail: #3A86FF;
       --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
@@ -352,6 +349,28 @@
       position: relative;
     }
 
+    .mod-card-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      opacity: 0.7;
+    }
+
+    .mod-card-image.loaded::after {
+      display: none;
+    }
+
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
     .mod-card-image img {
       width: 100%;
       height: 100%;
@@ -441,27 +460,7 @@
       color: var(--jujutsu);
     }
 
-    .aot .mod-card-title {
-      color: var(--aot);
-    }
-
-    .hxh .mod-card-title {
-      color: var(--hxh);
-    }
-
-    .bleach .mod-card-title {
-      color: var(--bleach);
-    }
-
-    .jojo .mod-card-title {
-      color: var(--jojo);
-    }
-
-    .fairytail .mod-card-title {
-      color: var(--fairytail);
-    }
-
-    /* صفحة المود المفصل */
+    /* صفحة تفاصيل المود */
     .mod-details-page {
       display: none;
       animation: fadeIn 0.5s;
@@ -760,6 +759,35 @@
       transform: translateY(-5px);
     }
 
+    .visitor-counter {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .counter-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .counter-number {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    .counter-label {
+      font-size: 0.9rem;
+    }
+
+    .counter-item i {
+      color: var(--primary);
+    }
+
     .copyright {
       text-align: center;
       padding-top: 40px;
@@ -767,6 +795,38 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       color: #aaa;
       font-size: 0.9rem;
+    }
+
+    /* زر العودة لأعلى */
+    .back-to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 99;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
     /* تصميم متجاوب */
@@ -822,6 +882,10 @@
       .mod-gallery {
         grid-template-columns: repeat(2, 1fr);
       }
+      
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 576px) {
@@ -852,6 +916,10 @@
       .main-mod-image {
         height: 250px;
       }
+      
+      .visitor-counter {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -868,11 +936,6 @@
       
       <ul class="nav-links">
         <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</a></li>
-        <li><a href="#" onclick="showPage('onepiece')"><i class="fas fa-skull-crossbones"></i> ون بيس</a></li>
-        <li><a href="#" onclick="showPage('naruto')"><i class="fas fa-user-ninja"></i> ناروتو</a></li>
-        <li><a href="#" onclick="showPage('dragonball')"><i class="fas fa-bolt"></i> دراغون بول</a></li>
-        <li><a href="#" onclick="showPage('jujutsu')"><i class="fas fa-eye"></i> جيتسو كايسن</a></li>
-        <li><a href="#" onclick="showPage('demonslayer')"><i class="fas fa-sword"></i> قاتل الشياطين</a></li>
       </ul>
       
       <button class="mobile-menu-btn" onclick="toggleSidebar()">
@@ -893,26 +956,21 @@
     <div class="sidebar-categories">
       <h4 class="category-title"><i class="fas fa-fire"></i> أحدث المودات</h4>
       <ul class="category-links">
-        <li><a href="#" onclick="showModDetails('onepiece')"><i class="fas fa-star"></i> ون بيس الجديد</a></li>
-        <li><a href="#" onclick="showModDetails('naruto')"><i class="fas fa-star"></i> ناروتو شيبودن</a></li>
-        <li><a href="#" onclick="showModDetails('dragonball')"><i class="fas fa-star"></i> دراغون بول سوبر</a></li>
-        <li><a href="#" onclick="showModDetails('jujutsu')"><i class="fas fa-star"></i> جيتسو كايسن</a></li>
+        <li><a href="#" onclick="showModDetails('onepiece-latest')"><i class="fas fa-star"></i> ون بيس: فواكه الشيطان</a></li>
+        <li><a href="#" onclick="showModDetails('naruto-latest')"><i class="fas fa-star"></i> ناروتو: تقنيات الشاكرا</a></li>
+        <li><a href="#" onclick="showModDetails('dragonball-latest')"><i class="fas fa-star"></i> دراغون بول: تحولات السايان</a></li>
       </ul>
     </div>
     
     <div class="sidebar-categories">
       <h4 class="category-title"><i class="fas fa-tags"></i> التصنيفات</h4>
       <ul class="category-links">
-        <li><a href="https://rtxms.github.io/M.SMOD.github.io/onepiece.html" onclick="showPage('onepiece')"><i class="fas fa-skull-crossbones"></i> ون بيس</a></li>
+        <li><a href="#" onclick="showPage('onepiece')"><i class="fas fa-skull-crossbones"></i> ون بيس</a></li>
         <li><a href="#" onclick="showPage('naruto')"><i class="fas fa-user-ninja"></i> ناروتو</a></li>
         <li><a href="#" onclick="showPage('dragonball')"><i class="fas fa-bolt"></i> دراغون بول</a></li>
-        <li><a href="#" onclick="showPage('jujutsu')"><i class="fas fa-eye"></i> جيتسو كايسن</a></li>
+        <li><a href="#" onclick="showPage('jujutsu')"><i class="fas fa-eye"></i> جوجيتسو كايسن</a></li>
         <li><a href="#" onclick="showPage('demonslayer')"><i class="fas fa-sword"></i> قاتل الشياطين</a></li>
-        <li><a href="#" onclick="showPage('aot')"><i class="fas fa-arrows-alt"></i> هجوم العمالقة</a></li>
-        <li><a href="#" onclick="showPage('hxh')"><i class="fas fa-user-secret"></i> هنتر x هنتر</a></li>
-        <li><a href="#" onclick="showPage('bleach')"><i class="fas fa-ghost"></i> بليتش</a></li>
-        <li><a href="#" onclick="showPage('jojo')"><i class="fas fa-hand-sparkles"></i> جوجو</a></li>
-        <li><a href="#" onclick="showPage('fairytail')"><i class="fas fa-dragon"></i> فيري تيل</a></li>
+        <li><a href="#" onclick="showPage('other')"><i class="fas fa-random"></i> مودات متنوعة</a></li>
       </ul>
     </div>
   </div>
@@ -920,6 +978,11 @@
   <!-- زر التصنيفات العائم -->
   <div class="categories-btn" onclick="toggleSidebar()">
     <i class="fas fa-list"></i>
+  </div>
+  
+  <!-- زر العودة لأعلى -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
   </div>
   
   <!-- المحتوى الرئيسي -->
@@ -935,7 +998,7 @@
         <!-- مود ون بيس -->
         <div class="mod-card onepiece" onclick="showModDetails('onepiece')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس">
+            <img data-src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">مود ون بيس</h3>
@@ -949,7 +1012,7 @@
         <!-- مود ناروتو -->
         <div class="mod-card naruto" onclick="showModDetails('naruto')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود ناروتو">
+            <img data-src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود ناروتو">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">مود ناروتو</h3>
@@ -963,7 +1026,7 @@
         <!-- مود دراغون بول -->
         <div class="mod-card dragonball" onclick="showModDetails('dragonball')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود دراغون بول">
+            <img data-src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود دراغون بول">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">مود دراغون بول</h3>
@@ -974,13 +1037,13 @@
           </div>
         </div>
         
-        <!-- مود جيتسو كايسن -->
+        <!-- مود جوجيتسو كايسن -->
         <div class="mod-card jujutsu" onclick="showModDetails('jujutsu')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود جيتسو كايسن">
+            <img data-src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود جوجيتسو كايسن">
           </div>
           <div class="mod-card-content">
-            <h3 class="mod-card-title">مود جيتسو كايسن</h3>
+            <h3 class="mod-card-title">مود جوجيتسو كايسن</h3>
             <p class="mod-card-desc">
               تعلم تقنيات اللعنات وقاتل الأرواح الشريرة! يضم المود شخصيات يوجي، غوجو، سوكونا، وتقنيات اللعنات القوية.
             </p>
@@ -991,7 +1054,7 @@
         <!-- مود قاتل الشياطين -->
         <div class="mod-card demonslayer" onclick="showModDetails('demonslayer')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود قاتل الشياطين">
+            <img data-src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود قاتل الشياطين">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">مود قاتل الشياطين</h3>
@@ -1002,71 +1065,15 @@
           </div>
         </div>
         
-        <!-- مود هجوم العمالقة -->
-        <div class="mod-card aot" onclick="showModDetails('aot')">
+        <!-- مود متنوع -->
+        <div class="mod-card" onclick="showModDetails('other1')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود هجوم العمالقة">
+            <img data-src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود متنوع">
           </div>
           <div class="mod-card-content">
-            <h3 class="mod-card-title">مود هجوم العمالقة</h3>
+            <h3 class="mod-card-title">مود الأسلحة الأسطورية</h3>
             <p class="mod-card-desc">
-              انضم إلى فيلق الاستطلاع وحارب العمالقة! يضم المود معدات المناورة ثلاثية الأبعاد، عمالقة، وإرين.
-            </p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- مود هنتر x هنتر -->
-        <div class="mod-card hxh" onclick="showModDetails('hxh')">
-          <div class="mod-card-image">
-            <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود هنتر x هنتر">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">مود هنتر x هنتر</h3>
-            <p class="mod-card-desc">
-              اصبح هنتر وابحث عن الكنوز! يضم المود نظام النين، شخصيات غون، كيلوا، هيسوكا، وتحديات الامتحان.
-            </p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- مود بليتش -->
-        <div class="mod-card bleach" onclick="showModDetails('bleach')">
-          <div class="mod-card-image">
-            <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود بليتش">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">مود بليتش</h3>
-            <p class="mod-card-desc">
-              اصبح شينيغامي وقاتل الأرواح الشريرة! يضم المود شخصيات إيتشيغو، روكيا، بيوكيا، وتقنيات البانكاي.
-            </p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- مود جوجو -->
-        <div class="mod-card jojo" onclick="showModDetails('jojo')">
-          <div class="mod-card-image">
-            <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود جوجو">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">مود جوجو</h3>
-            <p class="mod-card-desc">
-              استخدم الستاند وقاتل الأعداء! يضم المود شخصيات جوتارو، ديو، جوزيف، وقدرات الستاند الفريدة.
-            </p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- مود فيري تيل -->
-        <div class="mod-card fairytail" onclick="showModDetails('fairytail')">
-          <div class="mod-card-image">
-            <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود فيري تيل">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">مود فيري تيل</h3>
-            <p class="mod-card-desc">
-              انضم إلى نقابة فيري تيل واستخدم السحر! يضم المود شخصيات ناتس، لوسي، إيرزا، وأنواع السحر المختلفة.
+              مجموعة من الأسلحة القوية بخصائص فريدة لتحسين تجربة اللعب.
             </p>
             <a href="#" class="mod-card-btn">تحميل المود</a>
           </div>
@@ -1082,10 +1089,9 @@
       </div>
       
       <div class="mods-grid">
-        <!-- يمكنك إضافة مودات ون بيس هنا بنفس طريقة الصفحة الرئيسية -->
-        <div class="mod-card onepiece" onclick="showModDetails('onepiece')">
+        <div class="mod-card onepiece" onclick="showModDetails('onepiece1')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس">
+            <img data-src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس الشامل">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">مود ون بيس الشامل</h3>
@@ -1098,7 +1104,7 @@
         
         <div class="mod-card onepiece" onclick="showModDetails('onepiece2')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود ون بيس 2">
+            <img data-src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود فواكه الشيطان">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">مود فواكه الشيطان</h3>
@@ -1118,10 +1124,9 @@
       </div>
       
       <div class="mods-grid">
-        <!-- يمكنك إضافة مودات ناروتو هنا -->
-        <div class="mod-card naruto" onclick="showModDetails('naruto')">
+        <div class="mod-card naruto" onclick="showModDetails('naruto1')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود ناروتو">
+            <img data-src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود ناروتو الشامل">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">مود ناروتو الشامل</h3>
@@ -1141,10 +1146,9 @@
       </div>
       
       <div class="mods-grid">
-        <!-- يمكنك إضافة مودات دراغون بول هنا -->
-        <div class="mod-card dragonball" onclick="showModDetails('dragonball')">
+        <div class="mod-card dragonball" onclick="showModDetails('dragonball1')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود دراغون بول">
+            <img data-src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود دراغون بول سوبر">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">مود دراغون بول سوبر</h3>
@@ -1159,20 +1163,19 @@
     
     <div id="jujutsu-page" class="page-content category-page">
       <div class="page-header">
-        <h1 class="page-title">مودات جيتسو كايسن</h1>
-        <p class="page-subtitle">استمتع بأفضل مودات جيتسو كايسن لماين كرافت</p>
+        <h1 class="page-title">مودات جوجيتسو كايسن</h1>
+        <p class="page-subtitle">استمتع بأفضل مودات جوجيتسو كايسن لماين كرافت</p>
       </div>
       
       <div class="mods-grid">
-        <!-- يمكنك إضافة مودات جيتسو كايسن هنا -->
-        <div class="mod-card jujutsu" onclick="showModDetails('jujutsu')">
+        <div class="mod-card jujutsu" onclick="showModDetails('jujutsu1')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود جيتسو كايسن">
+            <img data-src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود جوجيتسو كايسن الشامل">
           </div>
           <div class="mod-card-content">
-            <h3 class="mod-card-title">مود جيتسو كايسن الشامل</h3>
+            <h3 class="mod-card-title">مود جوجيتسو كايسن الشامل</h3>
             <p class="mod-card-desc">
-              النسخة الكاملة من مود جيتسو كايسن مع جميع اللعنات.
+              النسخة الكاملة من مود جوجيتسو كايسن مع جميع اللعنات.
             </p>
             <a href="#" class="mod-card-btn">تحميل المود</a>
           </div>
@@ -1187,15 +1190,36 @@
       </div>
       
       <div class="mods-grid">
-        <!-- يمكنك إضافة مودات قاتل الشياطين هنا -->
-        <div class="mod-card demonslayer" onclick="showModDetails('demonslayer')">
+        <div class="mod-card demonslayer" onclick="showModDetails('demonslayer1')">
           <div class="mod-card-image">
-            <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود قاتل الشياطين">
+            <img data-src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود قاتل الشياطين الشامل">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">مود قاتل الشياطين الشامل</h3>
             <p class="mod-card-desc">
               النسخة الكاملة من مود قاتل الشياطين مع جميع تقنيات التنفس.
+            </p>
+            <a href="#" class="mod-card-btn">تحميل المود</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="other-page" class="page-content category-page">
+      <div class="page-header">
+        <h1 class="page-title">مودات متنوعة</h1>
+        <p class="page-subtitle">استمتع بمجموعة متنوعة من المودات الشيقة</p>
+      </div>
+      
+      <div class="mods-grid">
+        <div class="mod-card" onclick="showModDetails('other1')">
+          <div class="mod-card-image">
+            <img data-src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود الأسلحة الأسطورية">
+          </div>
+          <div class="mod-card-content">
+            <h3 class="mod-card-title">مود الأسلحة الأسطورية</h3>
+            <p class="mod-card-desc">
+              مجموعة من الأسلحة القوية بخصائص فريدة لتحسين تجربة اللعب.
             </p>
             <a href="#" class="mod-card-btn">تحميل المود</a>
           </div>
@@ -1293,7 +1317,7 @@
         <h3>روابط سريعة</h3>
         <ul class="footer-links">
           <li><a href="#" onclick="showPage('home')"><i class="fas fa-arrow-left"></i> الرئيسية</a></li>
-          <li><a href="https://rtxms.github.io/M.SMOD.github.io/onepiece.html" onclick="showPage('onepiece')"><i class="fas fa-arrow-left"></i> مودات ون بيس</a></li>
+          <li><a href="#" onclick="showPage('onepiece')"><i class="fas fa-arrow-left"></i> مودات ون بيس</a></li>
           <li><a href="#" onclick="showPage('naruto')"><i class="fas fa-arrow-left"></i> مودات ناروتو</a></li>
           <li><a href="#" onclick="showPage('dragonball')"><i class="fas fa-arrow-left"></i> مودات دراغون بول</a></li>
         </ul>
@@ -1304,6 +1328,22 @@
         <ul class="footer-links">
           <li><a href="https://t.me/ms00bot"><i class="fab fa-telegram"></i> Telegram</a></li>
         </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3><i class="fas fa-chart-line"></i> إحصائيات الموقع</h3>
+        <div class="visitor-counter">
+          <div class="counter-item">
+            <i class="fas fa-users"></i>
+            <span class="counter-number" id="totalVisitors">0</span>
+            <span class="counter-label">زائر</span>
+          </div>
+          <div class="counter-item">
+            <i class="fas fa-eye"></i>
+            <span class="counter-number" id="todayVisitors">0</span>
+            <span class="counter-label">زائر اليوم</span>
+          </div>
+        </div>
       </div>
     </div>
     
@@ -1318,7 +1358,7 @@
       document.getElementById('sidebar').classList.toggle('open');
     }
     
-    // بيانات المودات (يمكن استبدالها ببيانات حقيقية من قاعدة بيانات)
+    // بيانات المودات
     const modsData = {
       'home': [
         {
@@ -1328,7 +1368,41 @@
           image: 'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
           category: 'onepiece'
         },
-        // يمكنك إضافة بقية المودات هنا بنفس الطريقة
+        {
+          id: 'naruto',
+          title: 'مود ناروتو',
+          desc: 'انضم إلى قرية الورق وتعلم الجوتسو! يضم المود شخصيات ناروتو، ساسكي، كاكاشي، وتقنيات الشاكرا المختلفة.',
+          image: 'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          category: 'naruto'
+        },
+        {
+          id: 'dragonball',
+          title: 'مود دراغون بول',
+          desc: 'اصبح سايان وانطلق في رحلات عبر الكون! يضم المود شخصيات جوكو، فيجيتا، بيروس، وتقنيات الكي الشهيرة.',
+          image: 'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          category: 'dragonball'
+        },
+        {
+          id: 'jujutsu',
+          title: 'مود جوجيتسو كايسن',
+          desc: 'تعلم تقنيات اللعنات وقاتل الأرواح الشريرة! يضم المود شخصيات يوجي، غوجو، سوكونا، وتقنيات اللعنات القوية.',
+          image: 'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          category: 'jujutsu'
+        },
+        {
+          id: 'demonslayer',
+          title: 'مود قاتل الشياطين',
+          desc: 'اصبح قاتل شياطين وانضم إلى فيلق القتلة! يضم المود شخصيات تانجيرو، نيزوكو، زينيتسو، وتقنيات التنفس.',
+          image: 'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          category: 'demonslayer'
+        },
+        {
+          id: 'other1',
+          title: 'مود الأسلحة الأسطورية',
+          desc: 'مجموعة من الأسلحة القوية بخصائص فريدة لتحسين تجربة اللعب.',
+          image: 'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          category: 'other'
+        }
       ],
       'onepiece': [
         {
@@ -1355,7 +1429,42 @@
           category: 'naruto'
         }
       ],
-      // يمكنك إضافة بقية التصنيفات بنفس الطريقة
+      'dragonball': [
+        {
+          id: 'dragonball1',
+          title: 'مود دراغون بول سوبر',
+          desc: 'النسخة الكاملة من مود دراغون بول مع جميع التحولات.',
+          image: 'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          category: 'dragonball'
+        }
+      ],
+      'jujutsu': [
+        {
+          id: 'jujutsu1',
+          title: 'مود جوجيتسو كايسن الشامل',
+          desc: 'النسخة الكاملة من مود جوجيتسو كايسن مع جميع اللعنات.',
+          image: 'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          category: 'jujutsu'
+        }
+      ],
+      'demonslayer': [
+        {
+          id: 'demonslayer1',
+          title: 'مود قاتل الشياطين الشامل',
+          desc: 'النسخة الكاملة من مود قاتل الشياطين مع جميع تقنيات التنفس.',
+          image: 'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          category: 'demonslayer'
+        }
+      ],
+      'other': [
+        {
+          id: 'other1',
+          title: 'مود الأسلحة الأسطورية',
+          desc: 'مجموعة من الأسلحة القوية بخصائص فريدة لتحسين تجربة اللعب.',
+          image: 'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          category: 'other'
+        }
+      ]
     };
     
     // عرض صفحة تفاصيل المود
@@ -1443,10 +1552,87 @@
       }
     });
     
-    // عند تحميل الصفحة، عرض الصفحة الرئيسية
-    window.onload = function() {
+    // عداد الزوار
+    function updateVisitorCounter() {
+      // هذه قيم افتراضية، يمكنك استبدالها ببيانات حقيقية
+      const totalVisitors = Math.floor(Math.random() * 5000) + 1000;
+      const todayVisitors = Math.floor(Math.random() * 200) + 50;
+      
+      // تأثير العد التصاعدي
+      animateCounter('totalVisitors', totalVisitors);
+      animateCounter('todayVisitors', todayVisitors);
+    }
+
+    function animateCounter(elementId, target) {
+      const element = document.getElementById(elementId);
+      const duration = 2000;
+      const step = Math.floor(target / (duration / 16));
+      
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          clearInterval(timer);
+          current = target;
+        }
+        element.textContent = current.toLocaleString();
+      }, 16);
+    }
+    
+    // تحميل الصور بشكل كسول
+    function lazyLoadImages() {
+      const images = document.querySelectorAll('.mod-card-image img');
+      
+      const lazyLoad = (target) => {
+        const io = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.dataset.src;
+              img.onload = () => {
+                img.parentElement.classList.add('loaded');
+              };
+              observer.disconnect();
+            }
+          });
+        });
+        
+        io.observe(target);
+      };
+      
+      images.forEach(img => {
+        img.dataset.src = img.src;
+        img.src = '';
+        lazyLoad(img);
+      });
+    }
+    
+    // زر العودة لأعلى
+    function setupBackToTop() {
+      window.addEventListener('scroll', function() {
+        const backToTop = document.getElementById('backToTop');
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add('active');
+        } else {
+          backToTop.classList.remove('active');
+        }
+      });
+
+      document.getElementById('backToTop').addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+    
+    // عند تحميل الصفحة
+    window.addEventListener('load', function() {
       showPage('home');
-    };
+      updateVisitorCounter();
+      lazyLoadImages();
+      setupBackToTop();
+    });
   </script>
 </body>
   </html>
