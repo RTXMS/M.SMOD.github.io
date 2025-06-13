@@ -349,7 +349,7 @@
       position: relative;
     }
 
-    .mod-card-image::after {
+    .mod-card-image:not(.loaded)::after {
       content: '';
       position: absolute;
       top: 0;
@@ -360,10 +360,6 @@
       background-size: 200% 100%;
       animation: loading 1.5s infinite;
       opacity: 0.7;
-    }
-
-    .mod-card-image.loaded::after {
-      display: none;
     }
 
     @keyframes loading {
@@ -990,11 +986,11 @@
         <!-- المود 1 -->
         <div class="mod-card" onclick="showModDetails('mod1')">
           <div class="mod-card-image">
-            <img data-src="https://i.postimg.cc/pdKsB1bn/55-20250612092314.png" alt="اسم المود">
+            <img src="https://i.postimg.cc/pdKsB1bn/55-20250612092314.png" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
-            <h3 class="mod-card-title">تحميلا فضل مود أنمي لماين كرافت الجوال</h3>
-            <p class="mod-card-desc">أفضل مودات انمي</p>
+            <h3 class="mod-card-title">اسم المود</h3>
+            <p class="mod-card-desc">وصف المود هنا</p>
             <a href="#" class="mod-card-btn">تحميل المود</a>
           </div>
         </div>
@@ -1002,7 +998,7 @@
         <!-- المود 2 -->
         <div class="mod-card" onclick="showModDetails('mod2')">
           <div class="mod-card-image">
-            <img data-src="https://i.postimg.cc/PJ5KTXLm/54-20250606091239.png" alt="اسم المود">
+            <img src="https://i.postimg.cc/PJ5KTXLm/54-20250606091239.png" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1014,7 +1010,7 @@
         <!-- المود 3 -->
         <div class="mod-card" onclick="showModDetails('mod3')">
           <div class="mod-card-image">
-            <img data-src="https://i.postimg.cc/Y0DRS5gT/51-20250524231413.png" alt="اسم المود">
+            <img src="https://i.postimg.cc/Y0DRS5gT/51-20250524231413.png" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1026,7 +1022,7 @@
         <!-- المود 4 -->
         <div class="mod-card" onclick="showModDetails('mod4')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="https://i.postimg.cc/L4xNv17v/49-20250510213732.png" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1038,7 +1034,7 @@
         <!-- المود 5 -->
         <div class="mod-card" onclick="showModDetails('mod5')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1050,7 +1046,7 @@
         <!-- المود 6 -->
         <div class="mod-card" onclick="showModDetails('mod6')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1062,7 +1058,7 @@
         <!-- المود 7 -->
         <div class="mod-card" onclick="showModDetails('mod7')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1074,7 +1070,7 @@
         <!-- المود 8 -->
         <div class="mod-card" onclick="showModDetails('mod8')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1086,7 +1082,7 @@
         <!-- المود 9 -->
         <div class="mod-card" onclick="showModDetails('mod9')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1098,7 +1094,7 @@
         <!-- المود 10 -->
         <div class="mod-card" onclick="showModDetails('mod10')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1110,7 +1106,7 @@
         <!-- المود 11 -->
         <div class="mod-card" onclick="showModDetails('mod11')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1122,7 +1118,7 @@
         <!-- المود 12 -->
         <div class="mod-card" onclick="showModDetails('mod12')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1134,7 +1130,7 @@
         <!-- المود 13 -->
         <div class="mod-card" onclick="showModDetails('mod13')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1146,7 +1142,7 @@
         <!-- المود 14 -->
         <div class="mod-card" onclick="showModDetails('mod14')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1158,7 +1154,7 @@
         <!-- المود 15 -->
         <div class="mod-card" onclick="showModDetails('mod15')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1170,7 +1166,7 @@
         <!-- المود 16 -->
         <div class="mod-card" onclick="showModDetails('mod16')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1182,7 +1178,7 @@
         <!-- المود 17 -->
         <div class="mod-card" onclick="showModDetails('mod17')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1194,7 +1190,7 @@
         <!-- المود 18 -->
         <div class="mod-card" onclick="showModDetails('mod18')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1206,7 +1202,7 @@
         <!-- المود 19 -->
         <div class="mod-card" onclick="showModDetails('mod19')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1218,7 +1214,7 @@
         <!-- المود 20 -->
         <div class="mod-card" onclick="showModDetails('mod20')">
           <div class="mod-card-image">
-            <img data-src="PATH_TO_IMAGE" alt="اسم المود">
+            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
           </div>
           <div class="mod-card-content">
             <h3 class="mod-card-title">اسم المود</h3>
@@ -1237,7 +1233,7 @@
       </div>
       
       <div class="mods-grid">
-        <!-- يمكنك إضافة مودات ون بيس هنا -->
+        <!-- يمكنك إضافة مودات ون بيس هنا بنفس تعديل الصور -->
       </div>
     </div>
     
@@ -1248,7 +1244,7 @@
       </div>
       
       <div class="mods-grid">
-        <!-- يمكنك إضافة مودات ناروتو هنا -->
+        <!-- يمكنك إضافة مودات ناروتو هنا بنفس تعديل الصور -->
       </div>
     </div>
     
@@ -1259,7 +1255,7 @@
       </div>
       
       <div class="mods-grid">
-        <!-- يمكنك إضافة مودات دراغون بول هنا -->
+        <!-- يمكنك إضافة مودات دراغون بول هنا بنفس تعديل الصور -->
       </div>
     </div>
     
@@ -1270,7 +1266,7 @@
       </div>
       
       <div class="mods-grid">
-        <!-- يمكنك إضافة مودات جوجيتسو كايسن هنا -->
+        <!-- يمكنك إضافة مودات جوجيتسو كايسن هنا بنفس تعديل الصور -->
       </div>
     </div>
     
@@ -1281,7 +1277,7 @@
       </div>
       
       <div class="mods-grid">
-        <!-- يمكنك إضافة مودات قاتل الشياطين هنا -->
+        <!-- يمكنك إضافة مودات قاتل الشياطين هنا بنفس تعديل الصور -->
       </div>
     </div>
     
@@ -1292,7 +1288,7 @@
       </div>
       
       <div class="mods-grid">
-        <!-- يمكنك إضافة مودات متنوعة هنا -->
+        <!-- يمكنك إضافة مودات متنوعة هنا بنفس تعديل الصور -->
       </div>
     </div>
     
@@ -1306,27 +1302,27 @@
       <div class="mod-details-container">
         <div class="mod-details-content">
           <div class="mod-details-images">
-            <div class="main-mod-image">
+            <div class="main-mod-image loaded">
               <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس">
             </div>
             
             <div class="mod-gallery">
-              <div class="gallery-image">
+              <div class="gallery-image loaded">
                 <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="صورة 1">
               </div>
-              <div class="gallery-image">
+              <div class="gallery-image loaded">
                 <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="صورة 2">
               </div>
-              <div class="gallery-image">
+              <div class="gallery-image loaded">
                 <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="صورة 3">
               </div>
-              <div class="gallery-image">
+              <div class="gallery-image loaded">
                 <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="صورة 4">
               </div>
-              <div class="gallery-image">
+              <div class="gallery-image loaded">
                 <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="صورة 5">
               </div>
-              <div class="gallery-image">
+              <div class="gallery-image loaded">
                 <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="صورة 6">
               </div>
             </div>
@@ -1487,7 +1483,7 @@
       gallery.innerHTML = '';
       modDetails.images.forEach(img => {
         gallery.innerHTML += `
-          <div class="gallery-image">
+          <div class="gallery-image loaded">
             <img src="${img}" alt="صورة المود">
           </div>
         `;
@@ -1535,36 +1531,6 @@
       }
     });
     
-    // تحميل الصور بشكل كسول
-    function lazyLoadImages() {
-      const images = document.querySelectorAll('.mod-card-image img');
-      
-      const lazyLoad = (target) => {
-        const io = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const img = entry.target;
-              img.src = img.dataset.src;
-              img.onload = () => {
-                img.parentElement.classList.add('loaded');
-              };
-              observer.disconnect();
-            }
-          });
-        });
-        
-        io.observe(target);
-      };
-      
-      images.forEach(img => {
-        img.dataset.src = img.src || '';
-        img.src = '';
-        if (img.dataset.src) {
-          lazyLoad(img);
-        }
-      });
-    }
-    
     // زر العودة لأعلى
     function setupBackToTop() {
       window.addEventListener('scroll', function() {
@@ -1588,7 +1554,6 @@
     window.addEventListener('load', function() {
       showPage('home');
       updateVisitorCounter();
-      lazyLoadImages();
       setupBackToTop();
     });
   </script>
