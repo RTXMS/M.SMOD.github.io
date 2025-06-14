@@ -301,10 +301,70 @@
       margin: 0 auto;
     }
 
+    /* شريط البحث */
+    .search-container {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 15px 25px;
+      border-radius: 50px;
+      border: 2px solid #e0e0e0;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      padding-right: 60px;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 5px 15px rgba(255, 62, 65, 0.2);
+    }
+
+    .search-btn {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    /* فلترة المودات */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
     /* شبكة المودات */
     .mods-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 30px;
       margin-top: 40px;
     }
@@ -342,9 +402,9 @@
       opacity: 0.8;
     }
 
-    /* التعديلات على الصور فقط */
+    /* تحسينات لعرض الصور بشكل أكبر */
     .mod-card-image {
-      height: 180px;
+      height: 220px; /* زيادة ارتفاع الصورة */
       width: 100%;
       overflow: hidden;
       position: relative;
@@ -379,15 +439,15 @@
     .mod-card-image img {
       width: auto;
       height: auto;
-      max-width: 100%;
-      max-height: 100%;
+      max-width: 90%; /* عرض أكبر للصورة */
+      max-height: 90%; /* ارتفاع أكبر للصورة */
       object-fit: contain;
       transition: var(--transition);
       border-radius: 6px;
     }
 
     .mod-card:hover .mod-card-image img {
-      transform: scale(1.05);
+      transform: scale(1.1); /* تكبير الصورة أكثر عند hover */
     }
 
     .mod-card-content {
@@ -396,12 +456,39 @@
       z-index: 2;
     }
 
+    .mod-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
     .mod-card-title {
       font-size: 1.6rem;
-      margin-bottom: 10px;
       font-weight: 900;
       color: var(--dark);
       transition: var(--transition);
+    }
+
+    .mod-card-version {
+      background: var(--primary);
+      color: white;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .mod-card-meta {
+      display: flex;
+      gap: 15px;
+      margin: 10px 0;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .mod-card-meta i {
+      margin-left: 5px;
     }
 
     .mod-card:hover .mod-card-title {
@@ -414,10 +501,20 @@
       line-height: 1.6;
       font-size: 0.95rem;
       transition: var(--transition);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .mod-card:hover .mod-card-desc {
       color: rgba(255, 255, 255, 0.9);
+    }
+
+    .mod-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .mod-card-btn {
@@ -445,6 +542,26 @@
       background: white;
       color: var(--primary);
       border-color: white;
+    }
+
+    .mod-card-fav {
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .mod-card-fav:hover, .mod-card-fav.active {
+      color: var(--primary);
+      background: rgba(255, 255, 255, 0.2);
     }
 
     /* ألوان المودات */
@@ -537,7 +654,7 @@
 
     .main-mod-image {
       width: 100%;
-      height: 400px;
+      height: 450px; /* زيادة ارتفاع الصورة الرئيسية */
       border-radius: 15px;
       overflow: hidden;
       margin-bottom: 20px;
@@ -551,8 +668,8 @@
     .main-mod-image img {
       width: auto;
       height: auto;
-      max-width: 100%;
-      max-height: 100%;
+      max-width: 95%; /* عرض أكبر للصورة الرئيسية */
+      max-height: 95%; /* ارتفاع أكبر للصورة الرئيسية */
       object-fit: contain;
       transition: var(--transition);
     }
@@ -568,7 +685,7 @@
     }
 
     .gallery-image {
-      height: 120px;
+      height: 150px; /* زيادة ارتفاع صور المعرض */
       border-radius: 10px;
       overflow: hidden;
       cursor: pointer;
@@ -587,8 +704,8 @@
     .gallery-image img {
       width: auto;
       height: auto;
-      max-width: 100%;
-      max-height: 100%;
+      max-width: 95%; /* عرض أكبر لصور المعرض */
+      max-height: 95%; /* ارتفاع أكبر لصور المعرض */
       object-fit: contain;
     }
 
@@ -656,6 +773,37 @@
       right: 0;
       top: 3px;
       color: var(--primary);
+    }
+
+    .mod-compatibility {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .compatibility-badges {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .compatibility-badges .badge {
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .compatibility-badges .badge.pc {
+      background: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .compatibility-badges .badge.mobile {
+      background: #e8f5e9;
+      color: #388e3c;
     }
 
     .mod-download {
@@ -856,7 +1004,7 @@
       }
       
       .main-mod-image {
-        height: 350px;
+        height: 400px;
       }
     }
 
@@ -880,6 +1028,10 @@
       .page-title {
         font-size: 2.5rem;
       }
+      
+      .mod-details-title {
+        font-size: 3rem;
+      }
     }
 
     @media (max-width: 768px) {
@@ -896,7 +1048,7 @@
       }
       
       .mod-details-title {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
       }
       
       .mod-gallery {
@@ -905,6 +1057,10 @@
       
       .footer-container {
         grid-template-columns: 1fr;
+      }
+      
+      .main-mod-image {
+        height: 350px;
       }
     }
 
@@ -918,7 +1074,7 @@
       }
       
       .mod-details-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
       
       .mod-details-subtitle {
@@ -937,8 +1093,16 @@
         height: 250px;
       }
       
+      .gallery-image {
+        height: 100px;
+      }
+      
       .visitor-counter {
         flex-direction: column;
+      }
+      
+      .mod-card-image {
+        height: 180px;
       }
     }
   </style>
@@ -956,6 +1120,8 @@
       
       <ul class="nav-links">
         <li><a href="#" class="active" onclick="showPage('home')"><i class="fas fa-home"></i> الرئيسية</a></li>
+        <li><a href="#" onclick="showPage('onepiece')"><i class="fas fa-skull-crossbones"></i> ون بيس</a></li>
+        <li><a href="#" onclick="showPage('naruto')"><i class="fas fa-user-ninja"></i> ناروتو</a></li>
       </ul>
       
       <button class="mobile-menu-btn" onclick="toggleSidebar()">
@@ -984,6 +1150,16 @@
         <li><a href="#" onclick="showPage('other')"><i class="fas fa-random"></i> مودات متنوعة</a></li>
       </ul>
     </div>
+    
+    <div class="sidebar-categories">
+      <h4 class="category-title"><i class="fas fa-filter"></i> الفلترة</h4>
+      <div class="filters">
+        <button class="filter-btn active">الكل</button>
+        <button class="filter-btn">الأكثر تحميلاً</button>
+        <button class="filter-btn">الأعلى تقييماً</button>
+        <button class="filter-btn">جديد</button>
+      </div>
+    </div>
   </div>
   
   <!-- زر التصنيفات العائم -->
@@ -1005,252 +1181,212 @@
         <p class="page-subtitle">استمتع بتجربة فريدة مع شخصيات أنيميك المفضلة في عالم ماين كرافت</p>
       </div>
       
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="ابحث عن مودات...">
+        <button class="search-btn"><i class="fas fa-search"></i></button>
+      </div>
+      
       <div class="mods-grid">
-        <!-- مساحة لـ 20 مود -->
-        <!-- المود 1 -->
-        <div class="mod-card" onclick="showModDetails('mod1')">
-          <div class="mod-card-image">
-            <img src="https://i.postimg.cc/L4xNv17v/49-20250510213732.png" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
+        <!-- المود 1 - ون بيس -->
+        <div class="mod-card onepiece" onclick="showModDetails('mod1')">
+          <div class="mod-card-image loaded">
+            <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس">
           </div>
           <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
+            <div class="mod-card-header">
+              <h3 class="mod-card-title">مود ون بيس</h3>
+              <span class="mod-card-version">v2.5</span>
+            </div>
+            <div class="mod-card-meta">
+              <span><i class="fas fa-download"></i> 12,345</span>
+              <span><i class="fas fa-star"></i> 4.8</span>
+            </div>
+            <p class="mod-card-desc">أضف شخصيات وقدرات عالم ون بيس إلى ماين كرافت مع هذا المود الرائع الذي يتيح لك تجربة عالم القراصنة</p>
+            <div class="mod-card-footer">
+              <a href="#" class="mod-card-btn">تحميل المود</a>
+              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
+            </div>
           </div>
         </div>
         
-        <!-- المود 2 -->
-        <div class="mod-card" onclick="showModDetails('mod2')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
+        <!-- المود 2 - ناروتو -->
+        <div class="mod-card naruto" onclick="showModDetails('mod2')">
+          <div class="mod-card-image loaded">
+            <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود ناروتو">
           </div>
           <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
+            <div class="mod-card-header">
+              <h3 class="mod-card-title">مود ناروتو</h3>
+              <span class="mod-card-version">v3.1</span>
+            </div>
+            <div class="mod-card-meta">
+              <span><i class="fas fa-download"></i> 9,876</span>
+              <span><i class="fas fa-star"></i> 4.7</span>
+            </div>
+            <p class="mod-card-desc">استخدم جوتسو النينجا المختلفة وشخصيات قرية الورق في ماين كرافت مع هذا المود المذهل</p>
+            <div class="mod-card-footer">
+              <a href="#" class="mod-card-btn">تحميل المود</a>
+              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
+            </div>
           </div>
         </div>
         
-        <!-- المود 3 -->
-        <div class="mod-card" onclick="showModDetails('mod3')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
+        <!-- المود 3 - دراغون بول -->
+        <div class="mod-card dragonball" onclick="showModDetails('mod3')">
+          <div class="mod-card-image loaded">
+            <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود دراغون بول">
           </div>
           <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
+            <div class="mod-card-header">
+              <h3 class="mod-card-title">مود دراغون بول</h3>
+              <span class="mod-card-version">v1.9</span>
+            </div>
+            <div class="mod-card-meta">
+              <span><i class="fas fa-download"></i> 8,543</span>
+              <span><i class="fas fa-star"></i> 4.6</span>
+            </div>
+            <p class="mod-card-desc">تحول إلى سوبر سايان واستخدم هجمات الكي في ماين كرافت مع هذا المود الرائع</p>
+            <div class="mod-card-footer">
+              <a href="#" class="mod-card-btn">تحميل المود</a>
+              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
+            </div>
           </div>
         </div>
         
-        <!-- المود 4 -->
-        <div class="mod-card" onclick="showModDetails('mod4')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
+        <!-- المود 4 - جوجيتسو كايسن -->
+        <div class="mod-card jujutsu" onclick="showModDetails('mod4')">
+          <div class="mod-card-image loaded">
+            <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود جوجيتسو كايسن">
           </div>
           <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
+            <div class="mod-card-header">
+              <h3 class="mod-card-title">مود جوجيتسو كايسن</h3>
+              <span class="mod-card-version">v1.2</span>
+            </div>
+            <div class="mod-card-meta">
+              <span><i class="fas fa-download"></i> 6,789</span>
+              <span><i class="fas fa-star"></i> 4.5</span>
+            </div>
+            <p class="mod-card-desc">استخدم تقنيات اللعنة والقدرات الفريدة من عالم جوجيتسو كايسن في ماين كرافت</p>
+            <div class="mod-card-footer">
+              <a href="#" class="mod-card-btn">تحميل المود</a>
+              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
+            </div>
           </div>
         </div>
         
-        <!-- المود 5 -->
-        <div class="mod-card" onclick="showModDetails('mod5')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
+        <!-- المود 5 - قاتل الشياطين -->
+        <div class="mod-card demonslayer" onclick="showModDetails('mod5')">
+          <div class="mod-card-image loaded">
+            <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود قاتل الشياطين">
           </div>
           <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
+            <div class="mod-card-header">
+              <h3 class="mod-card-title">مود قاتل الشياطين</h3>
+              <span class="mod-card-version">v2.0</span>
+            </div>
+            <div class="mod-card-meta">
+              <span><i class="fas fa-download"></i> 7,654</span>
+              <span><i class="fas fa-star"></i> 4.7</span>
+            </div>
+            <p class="mod-card-desc">قاتل الشياطين باستخدام تقنيات تنفس الماء والبرق مع هذا المود الرائع</p>
+            <div class="mod-card-footer">
+              <a href="#" class="mod-card-btn">تحميل المود</a>
+              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
+            </div>
           </div>
         </div>
         
-        <!-- المود 6 -->
+        <!-- المود 6 - هجوم العمالقة -->
         <div class="mod-card" onclick="showModDetails('mod6')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
+          <div class="mod-card-image loaded">
+            <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود هجوم العمالقة">
           </div>
           <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 7 -->
-        <div class="mod-card" onclick="showModDetails('mod7')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 8 -->
-        <div class="mod-card" onclick="showModDetails('mod8')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 9 -->
-        <div class="mod-card" onclick="showModDetails('mod9')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 10 -->
-        <div class="mod-card" onclick="showModDetails('mod10')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 11 -->
-        <div class="mod-card" onclick="showModDetails('mod11')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 12 -->
-        <div class="mod-card" onclick="showModDetails('mod12')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 13 -->
-        <div class="mod-card" onclick="showModDetails('mod13')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 14 -->
-        <div class="mod-card" onclick="showModDetails('mod14')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 15 -->
-        <div class="mod-card" onclick="showModDetails('mod15')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 16 -->
-        <div class="mod-card" onclick="showModDetails('mod16')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 17 -->
-        <div class="mod-card" onclick="showModDetails('mod17')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 18 -->
-        <div class="mod-card" onclick="showModDetails('mod18')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 19 -->
-        <div class="mod-card" onclick="showModDetails('mod19')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
-          </div>
-        </div>
-        
-        <!-- المود 20 -->
-        <div class="mod-card" onclick="showModDetails('mod20')">
-          <div class="mod-card-image">
-            <img src="PATH_TO_IMAGE" alt="اسم المود" onload="this.parentElement.classList.add('loaded')">
-          </div>
-          <div class="mod-card-content">
-            <h3 class="mod-card-title">اسم المود</h3>
-            <p class="mod-card-desc">وصف المود هنا</p>
-            <a href="#" class="mod-card-btn">تحميل المود</a>
+            <div class="mod-card-header">
+              <h3 class="mod-card-title">مود هجوم العمالقة</h3>
+              <span class="mod-card-version">v1.5</span>
+            </div>
+            <div class="mod-card-meta">
+              <span><i class="fas fa-download"></i> 5,432</span>
+              <span><i class="fas fa-star"></i> 4.4</span>
+            </div>
+            <p class="mod-card-desc">استخدم معدات المناورة ثلاثية الأبعاد وواجه العمالقة في ماين كرافت</p>
+            <div class="mod-card-footer">
+              <a href="#" class="mod-card-btn">تحميل المود</a>
+              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
+            </div>
           </div>
         </div>
       </div>
     </div>
     
     <!-- صفحات التصنيفات -->
+    <div id="onepiece-page" class="page-content category-page">
+      <div class="page-header">
+        <h1 class="page-title">مودات ون بيس</h1>
+        <p class="page-subtitle">استمتع بأفضل مودات ون بيس لماين كرافت</p>
+      </div>
+      
+      <div class="mods-grid">
+        <!-- يمكنك إضافة مودات ون بيس هنا بنفس تعديل الصور -->
+      </div>
+    </div>
     
+    <div id="naruto-page" class="page-content category-page">
+      <div class="page-header">
+        <h1 class="page-title">مودات ناروتو</h1>
+        <p class="page-subtitle">استمتع بأفضل مودات ناروتو لماين كرافت</p>
+      </div>
+      
+      <div class="mods-grid">
+        <!-- يمكنك إضافة مودات ناروتو هنا بنفس تعديل الصور -->
+      </div>
+    </div>
+    
+    <div id="dragonball-page" class="page-content category-page">
+      <div class="page-header">
+        <h1 class="page-title">مودات دراغون بول</h1>
+        <p class="page-subtitle">استمتع بأفضل مودات دراغون بول لماين كرافت</p>
+      </div>
+      
+      <div class="mods-grid">
+        <!-- يمكنك إضافة مودات دراغون بول هنا بنفس تعديل الصور -->
+      </div>
+    </div>
+    
+    <div id="jujutsu-page" class="page-content category-page">
+      <div class="page-header">
+        <h1 class="page-title">مودات جوجيتسو كايسن</h1>
+        <p class="page-subtitle">استمتع بأفضل مودات جوجيتسو كايسن لماين كرافت</p>
+      </div>
+      
+      <div class="mods-grid">
+        <!-- يمكنك إضافة مودات جوجيتسو كايسن هنا بنفس تعديل الصور -->
+      </div>
+    </div>
+    
+    <div id="demonslayer-page" class="page-content category-page">
+      <div class="page-header">
+        <h1 class="page-title">مودات قاتل الشياطين</h1>
+        <p class="page-subtitle">استمتع بأفضل مودات قاتل الشياطين لماين كرافت</p>
+      </div>
+      
+      <div class="mods-grid">
+        <!-- يمكنك إضافة مودات قاتل الشياطين هنا بنفس تعديل الصور -->
+      </div>
+    </div>
+    
+    <div id="other-page" class="page-content category-page">
+      <div class="page-header">
+        <h1 class="page-title">مودات متنوعة</h1>
+        <p class="page-subtitle">استمتع بمجموعة متنوعة من المودات الشيقة</p>
+      </div>
+      
+      <div class="mods-grid">
+        <!-- يمكنك إضافة مودات متنوعة هنا بنفس تعديل الصور -->
+      </div>
+    </div>
     
     <!-- صفحة تفاصيل المود -->
     <div id="mod-details-page" class="mod-details-page">
@@ -1299,6 +1435,14 @@
               </p>
             </div>
             
+            <div class="mod-compatibility">
+              <h3>متوافق مع:</h3>
+              <div class="compatibility-badges">
+                <span class="badge pc">Java Edition</span>
+                <span class="badge mobile">Bedrock Edition</span>
+              </div>
+            </div>
+            
             <div class="mod-features">
               <h4>مميزات المود:</h4>
               <ul>
@@ -1335,6 +1479,9 @@
         <p>نقدم أفضل مودات الأنيمي لماين كرافت بجودة عالية وتحديثات مستمرة. تجارب جديدة وشيقة تنتظرك!</p>
         <div class="social-links">
           <a href="https://youtube.com/@m.smod1?si=3KcGl777zzdN7NYV"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
       
@@ -1352,6 +1499,8 @@
         <h3>اتصل بنا</h3>
         <ul class="footer-links">
           <li><a href="https://t.me/ms00bot"><i class="fab fa-telegram"></i> Telegram</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i> البريد الإلكتروني</a></li>
+          <li><a href="#"><i class="fas fa-phone"></i> الدعم الفني</a></li>
         </ul>
       </div>
       
@@ -1368,6 +1517,11 @@
             <span class="counter-number" id="todayVisitors">0</span>
             <span class="counter-label">زائر اليوم</span>
           </div>
+          <div class="counter-item">
+            <i class="fas fa-download"></i>
+            <span class="counter-number" id="totalDownloads">0</span>
+            <span class="counter-label">تنزيل</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1381,6 +1535,7 @@
     // عداد الزوار الحقيقي
     let totalVisitors = localStorage.getItem('totalVisitors') ? parseInt(localStorage.getItem('totalVisitors')) : 0;
     let todayVisitors = localStorage.getItem('todayVisitors') ? parseInt(localStorage.getItem('todayVisitors')) : 0;
+    let totalDownloads = localStorage.getItem('totalDownloads') ? parseInt(localStorage.getItem('totalDownloads')) : 0;
     const lastVisitDate = localStorage.getItem('lastVisitDate');
     const currentDate = new Date().toLocaleDateString();
     
@@ -1400,8 +1555,9 @@
       localStorage.setItem('todayVisitors', todayVisitors);
       
       // عرض العدادات
-      document.getElementById('totalVisitors').textContent = totalVisitors;
-      document.getElementById('todayVisitors').textContent = todayVisitors;
+      document.getElementById('totalVisitors').textContent = totalVisitors.toLocaleString();
+      document.getElementById('todayVisitors').textContent = todayVisitors.toLocaleString();
+      document.getElementById('totalDownloads').textContent = totalDownloads.toLocaleString();
     }
     
     // تبديل القائمة الجانبية
@@ -1424,9 +1580,16 @@
           'أكثر من 30 شخصية من عالم ون بيس',
           '20 نوعًا من فواكه الشيطان مع قدراتها الفريدة',
           'نظام قتال متطور يشمل جميع أنواع الهاكي',
-          'إمكانية بناء سفن قراصنة قابلة للتخصيص'
+          'إمكانية بناء سفن قراصنة قابلة للتخصيص',
+          'عالم مفتوح مع جزر مختلفة يمكن استكشافها',
+          'مهام وجنود بحرية وأعداء أقوياء',
+          'أزياء وشخصيات قابلة للتخصيص',
+          'توافق مع أحدث إصدارات ماين كرافت'
         ],
         images: [
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
           'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
           'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
           'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg'
@@ -1441,10 +1604,10 @@
       // تحديث معرض الصور
       const gallery = document.querySelector('.mod-gallery');
       gallery.innerHTML = '';
-      modDetails.images.forEach(img => {
+      modDetails.images.forEach((img, index) => {
         gallery.innerHTML += `
           <div class="gallery-image loaded">
-            <img src="${img}" alt="صورة المود">
+            <img src="${img}" alt="صورة ${index + 1}">
           </div>
         `;
       });
@@ -1455,6 +1618,9 @@
       modDetails.features.forEach(feature => {
         featuresList.innerHTML += `<li>${feature}</li>`;
       });
+      
+      // تحديث الصورة الرئيسية
+      document.querySelector('.main-mod-image img').src = modDetails.images[0];
     }
     
     // العودة إلى صفحة المودات
@@ -1475,6 +1641,9 @@
         link.classList.remove('active');
       });
       document.querySelector(`.nav-links a[onclick*="${pageId}"]`).classList.add('active');
+      
+      // إغلاق القائمة الجانبية إذا كانت مفتوحة
+      document.getElementById('sidebar').classList.remove('open');
     }
     
     // إغلاق القائمة الجانبية عند النقر خارجها
@@ -1510,11 +1679,53 @@
       });
     }
     
+    // تفعيل فلتر المودات
+    function setupFilters() {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          // هنا يمكنك تطبيق الفلتر حسب النوع المحدد
+          // يمكنك إضافة كود لجلب المودات المفلترة من الخادم
+        });
+      });
+    }
+    
+    // تفعيل زر المفضلة
+    function setupFavButtons() {
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.mod-card-fav')) {
+          const favBtn = e.target.closest('.mod-card-fav');
+          favBtn.classList.toggle('active');
+          favBtn.innerHTML = favBtn.classList.contains('active') ? 
+            '<i class="fas fa-heart"></i>' : '<i class="far fa-heart"></i>';
+          
+          // هنا يمكنك إضافة كود لحفظ المفضلة في localStorage أو الخادم
+        }
+      });
+    }
+    
     // عند تحميل الصفحة
     window.addEventListener('load', function() {
       showPage('home');
       updateVisitorCounter();
       setupBackToTop();
+      setupFilters();
+      setupFavButtons();
+      
+      // إعداد حدث التنزيل
+      document.querySelectorAll('.mod-card-btn, .mod-download-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          totalDownloads++;
+          localStorage.setItem('totalDownloads', totalDownloads);
+          document.getElementById('totalDownloads').textContent = totalDownloads.toLocaleString();
+          
+          // يمكنك هنا إضافة كود لتنزيل الملف الحقيقي
+          alert('شكراً لتحميلك المود! سيبدأ التنزيل قريباً');
+        });
+      });
     });
   </script>
 </body>
