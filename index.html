@@ -997,6 +997,187 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
+    /* إضافة أنماط جديدة لنظام التعليقات */
+    .comments-section {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-top: 40px;
+    }
+    
+    .comments-section h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .comments-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    
+    .comment-form {
+      margin-bottom: 30px;
+    }
+    
+    .comment-form textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      border: 2px solid #e0e0e0;
+      resize: vertical;
+      min-height: 100px;
+      margin-bottom: 15px;
+      font-family: 'Tajawal', sans-serif;
+    }
+    
+    .comment-form button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: var(--transition);
+    }
+    
+    .comment-form button:hover {
+      background: var(--darker);
+      transform: translateY(-3px);
+    }
+    
+    .comments-list {
+      margin-top: 30px;
+    }
+    
+    .comment {
+      border-bottom: 1px solid #eee;
+      padding: 20px 0;
+    }
+    
+    .comment:last-child {
+      border-bottom: none;
+    }
+    
+    .comment-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .comment-user {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-left: 15px;
+    }
+    
+    .comment-name {
+      font-weight: bold;
+    }
+    
+    .comment-date {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-right: 10px;
+    }
+    
+    .comment-content {
+      margin-right: 55px;
+      line-height: 1.6;
+    }
+    
+    /* تحسينات لنظام البحث */
+    .search-results {
+      display: none;
+      margin-top: 20px;
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .search-result-item {
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .search-result-item:hover {
+      background: #f9f9f9;
+    }
+    
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+    
+    .no-results {
+      text-align: center;
+      padding: 20px;
+      color: var(--gray);
+    }
+    
+    /* تحسينات للصفحة الرئيسية */
+    .mods-count {
+      text-align: center;
+      margin: 20px 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* إضافة ستايل النجوم */
+    .rating-container {
+      margin-bottom: 20px;
+    }
+    
+    .stars-rating {
+      direction: ltr;
+      unicode-bidi: bidi-override;
+      margin-top: 10px;
+    }
+    
+    .star {
+      font-size: 1.5rem;
+      color: var(--accent);
+      cursor: pointer;
+      transition: var(--transition);
+      margin: 0 2px;
+    }
+    
+    .star:hover {
+      transform: scale(1.2);
+    }
+    
+    .star i {
+      display: inline-block;
+    }
+    
+    /* تحسينات أخرى */
+    .mod-card-meta span {
+      display: flex;
+      align-items: center;
+    }
+    
+    .mod-card-meta i {
+      margin-left: 5px;
+    }
+
     /* تصميم متجاوب */
     @media (max-width: 1200px) {
       .mod-details-content {
@@ -1182,142 +1363,15 @@
       </div>
       
       <div class="search-container">
-        <input type="text" class="search-input" placeholder="ابحث عن مودات...">
+        <input type="text" class="search-input" placeholder="ابحث عن مودات..." id="searchInput">
         <button class="search-btn"><i class="fas fa-search"></i></button>
+        <div class="search-results" id="searchResults"></div>
       </div>
       
-      <div class="mods-grid">
-        <!-- المود 1 - ون بيس -->
-        <div class="mod-card onepiece" onclick="showModDetails('mod1')">
-          <div class="mod-card-image loaded">
-            <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس">
-          </div>
-          <div class="mod-card-content">
-            <div class="mod-card-header">
-              <h3 class="mod-card-title">مود ون بيس</h3>
-              <span class="mod-card-version">v2.5</span>
-            </div>
-            <div class="mod-card-meta">
-              <span><i class="fas fa-download"></i> 12,345</span>
-              <span><i class="fas fa-star"></i> 4.8</span>
-            </div>
-            <p class="mod-card-desc">أضف شخصيات وقدرات عالم ون بيس إلى ماين كرافت مع هذا المود الرائع الذي يتيح لك تجربة عالم القراصنة</p>
-            <div class="mod-card-footer">
-              <a href="#" class="mod-card-btn">تحميل المود</a>
-              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- المود 2 - ناروتو -->
-        <div class="mod-card naruto" onclick="showModDetails('mod2')">
-          <div class="mod-card-image loaded">
-            <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود ناروتو">
-          </div>
-          <div class="mod-card-content">
-            <div class="mod-card-header">
-              <h3 class="mod-card-title">مود ناروتو</h3>
-              <span class="mod-card-version">v3.1</span>
-            </div>
-            <div class="mod-card-meta">
-              <span><i class="fas fa-download"></i> 9,876</span>
-              <span><i class="fas fa-star"></i> 4.7</span>
-            </div>
-            <p class="mod-card-desc">استخدم جوتسو النينجا المختلفة وشخصيات قرية الورق في ماين كرافت مع هذا المود المذهل</p>
-            <div class="mod-card-footer">
-              <a href="#" class="mod-card-btn">تحميل المود</a>
-              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- المود 3 - دراغون بول -->
-        <div class="mod-card dragonball" onclick="showModDetails('mod3')">
-          <div class="mod-card-image loaded">
-            <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود دراغون بول">
-          </div>
-          <div class="mod-card-content">
-            <div class="mod-card-header">
-              <h3 class="mod-card-title">مود دراغون بول</h3>
-              <span class="mod-card-version">v1.9</span>
-            </div>
-            <div class="mod-card-meta">
-              <span><i class="fas fa-download"></i> 8,543</span>
-              <span><i class="fas fa-star"></i> 4.6</span>
-            </div>
-            <p class="mod-card-desc">تحول إلى سوبر سايان واستخدم هجمات الكي في ماين كرافت مع هذا المود الرائع</p>
-            <div class="mod-card-footer">
-              <a href="#" class="mod-card-btn">تحميل المود</a>
-              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- المود 4 - جوجيتسو كايسن -->
-        <div class="mod-card jujutsu" onclick="showModDetails('mod4')">
-          <div class="mod-card-image loaded">
-            <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود جوجيتسو كايسن">
-          </div>
-          <div class="mod-card-content">
-            <div class="mod-card-header">
-              <h3 class="mod-card-title">مود جوجيتسو كايسن</h3>
-              <span class="mod-card-version">v1.2</span>
-            </div>
-            <div class="mod-card-meta">
-              <span><i class="fas fa-download"></i> 6,789</span>
-              <span><i class="fas fa-star"></i> 4.5</span>
-            </div>
-            <p class="mod-card-desc">استخدم تقنيات اللعنة والقدرات الفريدة من عالم جوجيتسو كايسن في ماين كرافت</p>
-            <div class="mod-card-footer">
-              <a href="#" class="mod-card-btn">تحميل المود</a>
-              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- المود 5 - قاتل الشياطين -->
-        <div class="mod-card demonslayer" onclick="showModDetails('mod5')">
-          <div class="mod-card-image loaded">
-            <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="مود قاتل الشياطين">
-          </div>
-          <div class="mod-card-content">
-            <div class="mod-card-header">
-              <h3 class="mod-card-title">مود قاتل الشياطين</h3>
-              <span class="mod-card-version">v2.0</span>
-            </div>
-            <div class="mod-card-meta">
-              <span><i class="fas fa-download"></i> 7,654</span>
-              <span><i class="fas fa-star"></i> 4.7</span>
-            </div>
-            <p class="mod-card-desc">قاتل الشياطين باستخدام تقنيات تنفس الماء والبرق مع هذا المود الرائع</p>
-            <div class="mod-card-footer">
-              <a href="#" class="mod-card-btn">تحميل المود</a>
-              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- المود 6 - هجوم العمالقة -->
-        <div class="mod-card" onclick="showModDetails('mod6')">
-          <div class="mod-card-image loaded">
-            <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="مود هجوم العمالقة">
-          </div>
-          <div class="mod-card-content">
-            <div class="mod-card-header">
-              <h3 class="mod-card-title">مود هجوم العمالقة</h3>
-              <span class="mod-card-version">v1.5</span>
-            </div>
-            <div class="mod-card-meta">
-              <span><i class="fas fa-download"></i> 5,432</span>
-              <span><i class="fas fa-star"></i> 4.4</span>
-            </div>
-            <p class="mod-card-desc">استخدم معدات المناورة ثلاثية الأبعاد وواجه العمالقة في ماين كرافت</p>
-            <div class="mod-card-footer">
-              <a href="#" class="mod-card-btn">تحميل المود</a>
-              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
-        </div>
+      <div class="mods-count">عرض <span id="modsCount">0</span> مود</div>
+      
+      <div class="mods-grid" id="modsGrid">
+        <!-- سيتم ملؤها بواسطة JavaScript -->
       </div>
     </div>
     
@@ -1327,10 +1381,7 @@
         <h1 class="page-title">مودات ون بيس</h1>
         <p class="page-subtitle">استمتع بأفضل مودات ون بيس لماين كرافت</p>
       </div>
-      
-      <div class="mods-grid">
-        <!-- يمكنك إضافة مودات ون بيس هنا بنفس تعديل الصور -->
-      </div>
+      <div class="mods-grid" id="onepiece-mods"></div>
     </div>
     
     <div id="naruto-page" class="page-content category-page">
@@ -1338,10 +1389,7 @@
         <h1 class="page-title">مودات ناروتو</h1>
         <p class="page-subtitle">استمتع بأفضل مودات ناروتو لماين كرافت</p>
       </div>
-      
-      <div class="mods-grid">
-        <!-- يمكنك إضافة مودات ناروتو هنا بنفس تعديل الصور -->
-      </div>
+      <div class="mods-grid" id="naruto-mods"></div>
     </div>
     
     <div id="dragonball-page" class="page-content category-page">
@@ -1349,10 +1397,7 @@
         <h1 class="page-title">مودات دراغون بول</h1>
         <p class="page-subtitle">استمتع بأفضل مودات دراغون بول لماين كرافت</p>
       </div>
-      
-      <div class="mods-grid">
-        <!-- يمكنك إضافة مودات دراغون بول هنا بنفس تعديل الصور -->
-      </div>
+      <div class="mods-grid" id="dragonball-mods"></div>
     </div>
     
     <div id="jujutsu-page" class="page-content category-page">
@@ -1360,10 +1405,7 @@
         <h1 class="page-title">مودات جوجيتسو كايسن</h1>
         <p class="page-subtitle">استمتع بأفضل مودات جوجيتسو كايسن لماين كرافت</p>
       </div>
-      
-      <div class="mods-grid">
-        <!-- يمكنك إضافة مودات جوجيتسو كايسن هنا بنفس تعديل الصور -->
-      </div>
+      <div class="mods-grid" id="jujutsu-mods"></div>
     </div>
     
     <div id="demonslayer-page" class="page-content category-page">
@@ -1371,10 +1413,7 @@
         <h1 class="page-title">مودات قاتل الشياطين</h1>
         <p class="page-subtitle">استمتع بأفضل مودات قاتل الشياطين لماين كرافت</p>
       </div>
-      
-      <div class="mods-grid">
-        <!-- يمكنك إضافة مودات قاتل الشياطين هنا بنفس تعديل الصور -->
-      </div>
+      <div class="mods-grid" id="demonslayer-mods"></div>
     </div>
     
     <div id="other-page" class="page-content category-page">
@@ -1382,92 +1421,12 @@
         <h1 class="page-title">مودات متنوعة</h1>
         <p class="page-subtitle">استمتع بمجموعة متنوعة من المودات الشيقة</p>
       </div>
-      
-      <div class="mods-grid">
-        <!-- يمكنك إضافة مودات متنوعة هنا بنفس تعديل الصور -->
-      </div>
+      <div class="mods-grid" id="other-mods"></div>
     </div>
     
     <!-- صفحة تفاصيل المود -->
     <div id="mod-details-page" class="mod-details-page">
-      <div class="mod-details-header">
-        <h1 class="mod-details-title">مود ون بيس</h1>
-        <p class="mod-details-subtitle">استمتع بتجربة عالم ون بيس داخل ماين كرافت مع شخصيات لوفي، زورو، كايدو، بيغ مام، فواكه الشيطان، والسيوف الأسطورية</p>
-      </div>
-      
-      <div class="mod-details-container">
-        <div class="mod-details-content">
-          <div class="mod-details-images">
-            <div class="main-mod-image loaded">
-              <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="مود ون بيس">
-            </div>
-            
-            <div class="mod-gallery">
-              <div class="gallery-image loaded">
-                <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="صورة 1">
-              </div>
-              <div class="gallery-image loaded">
-                <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="صورة 2">
-              </div>
-              <div class="gallery-image loaded">
-                <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="صورة 3">
-              </div>
-              <div class="gallery-image loaded">
-                <img src="https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg" alt="صورة 4">
-              </div>
-              <div class="gallery-image loaded">
-                <img src="https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg" alt="صورة 5">
-              </div>
-              <div class="gallery-image loaded">
-                <img src="https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png" alt="صورة 6">
-              </div>
-            </div>
-          </div>
-          
-          <div class="mod-details-info">
-            <div class="mod-details-description">
-              <h3>وصف المود</h3>
-              <p>
-                مود ون بيس يقدم تجربة كاملة لعالم ون بيس داخل ماين كرافت. يمكنك اختيار شخصيتك المفضلة واستخدام قدراتها الفريدة، جمع فواكه الشيطان، بناء سفينتك الخاصة، والانطلاق في رحلات بحرية لاكتشاف الجزر والكنوز.
-              </p>
-              <p>
-                يتميز المود بدقة عالية في تصميم الشخصيات والقدرات، مع نظام قتال متطور يحاكي الأنمي بشكل رائع. يمكنك تعلم تقنيات الهاكي المختلفة (هاكي الملاحظة، هاكي التسليح، هاكي الملوكي) وتطوير شخصيتك لتصبح أقوى قرصان أو بحار.
-              </p>
-            </div>
-            
-            <div class="mod-compatibility">
-              <h3>متوافق مع:</h3>
-              <div class="compatibility-badges">
-                <span class="badge pc">Java Edition</span>
-                <span class="badge mobile">Bedrock Edition</span>
-              </div>
-            </div>
-            
-            <div class="mod-features">
-              <h4>مميزات المود:</h4>
-              <ul>
-                <li>أكثر من 30 شخصية من عالم ون بيس</li>
-                <li>20 نوعًا من فواكه الشيطان مع قدراتها الفريدة</li>
-                <li>نظام قتال متطور يشمل جميع أنواع الهاكي</li>
-                <li>إمكانية بناء سفن قراصنة قابلة للتخصيص</li>
-                <li>عالم مفتوح مع جزر مختلفة يمكن استكشافها</li>
-                <li>مهام وجنود بحرية وأعداء أقوياء</li>
-                <li>أزياء وشخصيات قابلة للتخصيص</li>
-                <li>توافق مع أحدث إصدارات ماين كرافت</li>
-              </ul>
-            </div>
-            
-            <div class="mod-download">
-              <button class="mod-download-btn">
-                <i class="fas fa-download"></i> تحميل المود
-              </button>
-              <a href="#" class="back-to-mods" onclick="backToMods()">
-                <i class="fas fa-arrow-right"></i> العودة إلى المودات
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- سيتم ملؤها بواسطة JavaScript -->
     </div>
   </div>
   
@@ -1532,50 +1491,26 @@
   </footer>
 
   <script>
-    // عداد الزوار الحقيقي
-    let totalVisitors = localStorage.getItem('totalVisitors') ? parseInt(localStorage.getItem('totalVisitors')) : 0;
-    let todayVisitors = localStorage.getItem('todayVisitors') ? parseInt(localStorage.getItem('todayVisitors')) : 0;
-    let totalDownloads = localStorage.getItem('totalDownloads') ? parseInt(localStorage.getItem('totalDownloads')) : 0;
-    const lastVisitDate = localStorage.getItem('lastVisitDate');
-    const currentDate = new Date().toLocaleDateString();
-    
-    function updateVisitorCounter() {
-      // زيادة العداد إذا كانت هذه أول زيارة اليوم
-      if (lastVisitDate !== currentDate) {
-        todayVisitors = 0;
-        localStorage.setItem('lastVisitDate', currentDate);
-      }
-      
-      // زيادة العدادات
-      totalVisitors++;
-      todayVisitors++;
-      
-      // حفظ البيانات في localStorage
-      localStorage.setItem('totalVisitors', totalVisitors);
-      localStorage.setItem('todayVisitors', todayVisitors);
-      
-      // عرض العدادات
-      document.getElementById('totalVisitors').textContent = totalVisitors.toLocaleString();
-      document.getElementById('todayVisitors').textContent = todayVisitors.toLocaleString();
-      document.getElementById('totalDownloads').textContent = totalDownloads.toLocaleString();
-    }
-    
-    // تبديل القائمة الجانبية
-    function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('open');
-    }
-    
-    // عرض صفحة تفاصيل المود
-    function showModDetails(modId) {
-      document.querySelector('.active-page').classList.remove('active-page');
-      document.getElementById('mod-details-page').classList.add('active-page');
-      
-      // هنا يمكنك جلب بيانات المود من مصدر آخر أو قاعدة بيانات
-      // وتحديث محتوى الصفحة بناءً على modId
-      const modDetails = {
-        title: 'مود ون بيس',
-        subtitle: 'استمتع بتجربة عالم ون بيس داخل ماين كرافت',
-        description: 'مود ون بيس يقدم تجربة كاملة لعالم ون بيس داخل ماين كرافت. يمكنك اختيار شخصيتك المفضلة واستخدام قدراتها الفريدة، جمع فواكه الشيطان، بناء سفينتك الخاصة، والانطلاق في رحلات بحرية لاكتشاف الجزر والكنوز.',
+    // بيانات المودات
+    const modsData = {
+      mod1: {
+        id: 'mod1',
+        name: 'مود ون بيس الكامل',
+        version: 'v2.5',
+        category: 'onepiece',
+        description: 'أضف شخصيات وقدرات عالم ون بيس إلى ماين كرافت مع هذا المود الرائع الذي يتيح لك تجربة عالم القراصنة بشكل كامل مع كل الشخصيات والأماكن الشهيرة.',
+        images: [
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png'
+        ],
         features: [
           'أكثر من 30 شخصية من عالم ون بيس',
           '20 نوعًا من فواكه الشيطان مع قدراتها الفريدة',
@@ -1586,43 +1521,525 @@
           'أزياء وشخصيات قابلة للتخصيص',
           'توافق مع أحدث إصدارات ماين كرافت'
         ],
+        downloads: 0,
+        ratings: {},
+        comments: []
+      },
+      mod2: {
+        id: 'mod2',
+        name: 'مود ناروتو شيبودن',
+        version: 'v3.1',
+        category: 'naruto',
+        description: 'استخدم جوتسو النينجا المختلفة وشخصيات قرية الورق في ماين كرافت مع هذا المود المذهل الذي يحوي كل تقنيات النينجا المعروفة.',
         images: [
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg'
+        ],
+        features: [
+          'شخصيات ناروتو، ساسكي، كاكاشي وغيرهم',
+          'أكثر من 50 تقنية نينجا مختلفة',
+          'نظام الشاكرا وتطور الشخصية',
+          'مهام خاصة بكل قرية',
+          'أسلحة النينجا المختلفة',
+          'تحولات مختلفة للشخصيات',
+          'نظام المهام والتدريب',
+          'توافق مع إصدارات ماين كرافت الحديثة'
+        ],
+        downloads: 0,
+        ratings: {},
+        comments: []
+      },
+      mod3: {
+        id: 'mod3',
+        name: 'مود دراغون بول Z',
+        version: 'v1.9',
+        category: 'dragonball',
+        description: 'تحول إلى سوبر سايان واستخدم هجمات الكي في ماين كرافت مع هذا المود الرائع الذي يحوي شخصيات دراغون بول الشهيرة.',
+        images: [
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
           'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
           'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
           'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
           'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
           'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
           'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg'
-        ]
-      };
+        ],
+        features: [
+          'شخصيات جوكو، فيجيتا، بيكولو وغيرهم',
+          'تحولات سوبر سايان المختلفة',
+          'أكثر من 30 هجوم كي مختلف',
+          'نظام تدريب لزيادة قوة الشخصية',
+          'أعداء أقوياء مثل فريزر وسيل',
+          'إمكانية الطيران والتحكم بالطاقة',
+          'أزياء وشخصيات قابلة للتخصيص',
+          'توافق مع أحدث إصدارات ماين كرافت'
+        ],
+        downloads: 0,
+        ratings: {},
+        comments: []
+      },
+      mod4: {
+        id: 'mod4',
+        name: 'مود جوجيتسو كايسن',
+        version: 'v1.2',
+        category: 'jujutsu',
+        description: 'استخدم تقنيات اللعنة والقدرات الفريدة من عالم جوجيتسو كايسن في ماين كرافت مع هذا المود المذهل.',
+        images: [
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png'
+        ],
+        features: [
+          'شخصيات يوجي، ميغومي، ساتورو وغيرهم',
+          'تقنيات اللعنة المختلفة',
+          'نظام المجال اللعين',
+          'أعداء من الشياطين واللعنات',
+          'نظام تدريب لتحسين التقنيات',
+          'إمكانيات قتالية متقدمة',
+          'أزياء وشخصيات قابلة للتخصيص',
+          'توافق مع أحدث إصدارات ماين كرافت'
+        ],
+        downloads: 0,
+        ratings: {},
+        comments: []
+      },
+      mod5: {
+        id: 'mod5',
+        name: 'مود قاتل الشياطين',
+        version: 'v2.0',
+        category: 'demonslayer',
+        description: 'قاتل الشياطين باستخدام تقنيات تنفس الماء والبرق مع هذا المود الرائع الذي يحوي شخصيات تانجيرو، نيزوكو، زينيتسو وغيرهم.',
+        images: [
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg'
+        ],
+        features: [
+          'شخصيات تانجيرو، نيزوكو، زينيتسو وغيرهم',
+          'تقنيات التنفس المختلفة (الماء، البرق، النار)',
+          'سيوف نيشين مصممة بدقة',
+          'أعداء من الشياطين الأقوياء',
+          'نظام تدريب لتحسين التقنيات',
+          'إمكانيات قتالية متقدمة',
+          'أزياء وشخصيات قابلة للتخصيص',
+          'توافق مع أحدث إصدارات ماين كرافت'
+        ],
+        downloads: 0,
+        ratings: {},
+        comments: []
+      },
+      mod6: {
+        id: 'mod6',
+        name: 'مود هجوم العمالقة',
+        version: 'v1.5',
+        category: 'other',
+        description: 'استخدم معدات المناورة ثلاثية الأبعاد وواجه العمالقة في ماين كرافت مع هذا المود المثير.',
+        images: [
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg',
+          'https://i.postimg.cc/gcTL8NRJ/55-20250612092314.png',
+          'https://i.postimg.cc/3wV4zr0v/naruto-mod.jpg',
+          'https://i.postimg.cc/4NkqKj1b/dragonball-mod.jpg'
+        ],
+        features: [
+          'شخصيات إيرين، ميكاسا، ليفاي وغيرهم',
+          'معدات المناورة ثلاثية الأبعاد',
+          'أعداء من العمالقة بأحجام مختلفة',
+          'نظام تدريب لتحسين المهارات',
+          'إمكانيات حركة متقدمة',
+          'أزياء وشخصيات قابلة للتخصيص',
+          'توافق مع أحدث إصدارات ماين كرافت'
+        ],
+        downloads: 0,
+        ratings: {},
+        comments: []
+      }
+    };
+
+    // تحميل البيانات المحفوظة
+    function loadSavedData() {
+      const savedData = localStorage.getItem('modsData');
+      if (savedData) {
+        const parsedData = JSON.parse(savedData);
+        Object.keys(parsedData).forEach(modId => {
+          if (modsData[modId]) {
+            modsData[modId].downloads = parsedData[modId].downloads || 0;
+            modsData[modId].ratings = parsedData[modId].ratings || {};
+            modsData[modId].comments = parsedData[modId].comments || [];
+          }
+        });
+      }
       
-      // تحديث محتوى صفحة التفاصيل
-      document.querySelector('.mod-details-title').textContent = modDetails.title;
-      document.querySelector('.mod-details-subtitle').textContent = modDetails.subtitle;
-      document.querySelector('.mod-details-description p').textContent = modDetails.description;
+      // تحميل بيانات الزوار
+      const totalVisitors = localStorage.getItem('totalVisitors') || 0;
+      const todayVisitors = localStorage.getItem('todayVisitors') || 0;
+      const totalDownloads = localStorage.getItem('totalDownloads') || 0;
       
-      // تحديث معرض الصور
-      const gallery = document.querySelector('.mod-gallery');
-      gallery.innerHTML = '';
-      modDetails.images.forEach((img, index) => {
-        gallery.innerHTML += `
-          <div class="gallery-image loaded">
-            <img src="${img}" alt="صورة ${index + 1}">
+      document.getElementById('totalVisitors').textContent = totalVisitors.toLocaleString();
+      document.getElementById('todayVisitors').textContent = todayVisitors.toLocaleString();
+      document.getElementById('totalDownloads').textContent = totalDownloads.toLocaleString();
+    }
+
+    // حفظ البيانات
+    function saveData() {
+      const dataToSave = {};
+      Object.keys(modsData).forEach(modId => {
+        dataToSave[modId] = {
+          downloads: modsData[modId].downloads,
+          ratings: modsData[modId].ratings,
+          comments: modsData[modId].comments
+        };
+      });
+      localStorage.setItem('modsData', JSON.stringify(dataToSave));
+    }
+
+    // عرض المودات في الشبكة
+    function displayMods(modsList, targetElementId) {
+      const modsGrid = document.getElementById(targetElementId || 'modsGrid');
+      modsGrid.innerHTML = '';
+      
+      modsList.forEach(mod => {
+        const ratings = mod.ratings;
+        const ratingValues = Object.values(ratings);
+        const averageRating = ratingValues.length > 0 ? 
+          (ratingValues.reduce((a, b) => a + b, 0) / ratingValues.length : 0;
+        
+        const modCard = document.createElement('div');
+        modCard.className = `mod-card ${mod.category}`;
+        modCard.setAttribute('onclick', `showModDetails('${mod.id}')`);
+        modCard.innerHTML = `
+          <div class="mod-card-image loaded">
+            <img src="${mod.images[0]}" alt="${mod.name}" loading="lazy">
+          </div>
+          <div class="mod-card-content">
+            <div class="mod-card-header">
+              <h3 class="mod-card-title">${mod.name}</h3>
+              <span class="mod-card-version">${mod.version}</span>
+            </div>
+            <div class="mod-card-meta">
+              <span><i class="fas fa-download"></i> ${mod.downloads.toLocaleString()}</span>
+              <span><i class="fas fa-star"></i> ${averageRating.toFixed(1)} (${ratingValues.length})</span>
+              <span><i class="fas fa-comment"></i> ${mod.comments.length}</span>
+            </div>
+            <p class="mod-card-desc">${mod.description}</p>
+            <div class="mod-card-footer">
+              <a href="#" class="mod-card-btn" data-mod-id="${mod.id}">تحميل المود</a>
+              <button class="mod-card-fav"><i class="far fa-heart"></i></button>
+            </div>
           </div>
         `;
+        modsGrid.appendChild(modCard);
       });
       
-      // تحديث قائمة المميزات
-      const featuresList = document.querySelector('.mod-features ul');
-      featuresList.innerHTML = '';
-      modDetails.features.forEach(feature => {
-        featuresList.innerHTML += `<li>${feature}</li>`;
-      });
-      
-      // تحديث الصورة الرئيسية
-      document.querySelector('.main-mod-image img').src = modDetails.images[0];
+      // تحديث عدد المودات المعروضة
+      if (targetElementId === 'modsGrid') {
+        document.getElementById('modsCount').textContent = modsList.length;
+      }
     }
-    
+
+    // عرض تفاصيل المود
+    function showModDetails(modId) {
+      const mod = modsData[modId];
+      if (!mod) return;
+      
+      document.querySelector('.active-page').classList.remove('active-page');
+      const detailsPage = document.getElementById('mod-details-page');
+      detailsPage.classList.add('active-page');
+      
+      const ratings = mod.ratings;
+      const ratingValues = Object.values(ratings);
+      const averageRating = ratingValues.length > 0 ? 
+        (ratingValues.reduce((a, b) => a + b, 0) / ratingValues.length : 0;
+      
+      // بناء محتوى صفحة التفاصيل
+      detailsPage.innerHTML = `
+        <div class="mod-details-header">
+          <h1 class="mod-details-title">${mod.name}</h1>
+          <p class="mod-details-subtitle">
+            الإصدار ${mod.version} | التقييم: ${averageRating.toFixed(1)} (${ratingValues.length}) | 
+            التنزيلات: ${mod.downloads.toLocaleString()} | التعليقات: ${mod.comments.length}
+          </p>
+        </div>
+        
+        <div class="mod-details-container">
+          <div class="mod-details-content">
+            <div class="mod-details-images">
+              <div class="main-mod-image loaded">
+                <img src="${mod.images[0]}" alt="${mod.name}">
+              </div>
+              
+              <div class="mod-gallery">
+                ${mod.images.slice(0, 10).map((img, index) => `
+                  <div class="gallery-image loaded">
+                    <img src="${img}" alt="صورة ${index + 1}">
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+            
+            <div class="mod-details-info">
+              <div class="mod-details-description">
+                <h3>وصف المود</h3>
+                <p>${mod.description}</p>
+              </div>
+              
+              <div class="mod-compatibility">
+                <h3>متوافق مع:</h3>
+                <div class="compatibility-badges">
+                  <span class="badge pc">Java Edition</span>
+                  <span class="badge mobile">Bedrock Edition</span>
+                </div>
+              </div>
+              
+              <div class="mod-features">
+                <h4>مميزات المود:</h4>
+                <ul>
+                  ${mod.features.map(feature => `<li>${feature}</li>`).join('')}
+                </ul>
+              </div>
+              
+              <div class="mod-download">
+                <button class="mod-download-btn" data-mod-id="${mod.id}">
+                  <i class="fas fa-download"></i> تحميل المود
+                </button>
+                <a href="#" class="back-to-mods" onclick="backToMods()">
+                  <i class="fas fa-arrow-right"></i> العودة إلى المودات
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- قسم التعليقات -->
+          <div class="comments-section">
+            <h3>التعليقات (${mod.comments.length})</h3>
+            
+            <div class="comment-form">
+              <textarea id="commentText" placeholder="أضف تعليقك هنا..."></textarea>
+              <button onclick="addComment('${mod.id}')">نشر التعليق</button>
+            </div>
+            
+            <div class="comments-list" id="commentsList">
+              ${mod.comments.map(comment => `
+                <div class="comment">
+                  <div class="comment-header">
+                    <div class="comment-user">${comment.user.charAt(0).toUpperCase()}</div>
+                    <div class="comment-name">${comment.user}</div>
+                    <div class="comment-date">${new Date(comment.date).toLocaleString('ar-EG')}</div>
+                  </div>
+                  <div class="comment-content">${comment.text}</div>
+                </div>
+              `).join('')}
+              
+              ${mod.comments.length === 0 ? 
+                '<p class="no-results">لا توجد تعليقات بعد. كن أول من يعلق!</p>' : ''}
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // تفعيل النجوم للتقييم
+      setupRatingStars(modId);
+      
+      // تفعيل معرض الصور
+      setupImageGallery();
+    }
+
+    // إضافة تعليق جديد
+    function addComment(modId) {
+      const commentText = document.getElementById('commentText').value.trim();
+      if (!commentText) return;
+      
+      const mod = modsData[modId];
+      if (!mod) return;
+      
+      const userName = localStorage.getItem('userName') || 'مستخدم';
+      
+      const newComment = {
+        user: userName,
+        text: commentText,
+        date: new Date().toISOString()
+      };
+      
+      mod.comments.unshift(newComment);
+      saveData();
+      
+      // عرض التعليق الجديد
+      const commentsList = document.getElementById('commentsList');
+      const noComments = commentsList.querySelector('.no-results');
+      if (noComments) noComments.remove();
+      
+      const commentElement = document.createElement('div');
+      commentElement.className = 'comment';
+      commentElement.innerHTML = `
+        <div class="comment-header">
+          <div class="comment-user">${newComment.user.charAt(0).toUpperCase()}</div>
+          <div class="comment-name">${newComment.user}</div>
+          <div class="comment-date">${new Date(newComment.date).toLocaleString('ar-EG')}</div>
+        </div>
+        <div class="comment-content">${newComment.text}</div>
+      `;
+      
+      commentsList.insertBefore(commentElement, commentsList.firstChild);
+      document.getElementById('commentText').value = '';
+      
+      // تحديث عدد التعليقات في العنوان
+      const subtitle = document.querySelector('.mod-details-subtitle');
+      subtitle.textContent = subtitle.textContent.replace(
+        /التعليقات: \d+/, `التعليقات: ${mod.comments.length}`
+      );
+    }
+
+    // نظام التقييم بالنجوم
+    function setupRatingStars(modId) {
+      const userId = localStorage.getItem('userId') || generateUserId();
+      if (!localStorage.getItem('userId')) {
+        localStorage.setItem('userId', userId);
+      }
+      
+      const stars = document.querySelectorAll('.star');
+      const mod = modsData[modId];
+      const userRating = mod.ratings[userId] || 0;
+      
+      // عرض التقييم الحالي للمستخدم
+      if (userRating > 0) {
+        stars.forEach((star, index) => {
+          if (index < userRating) {
+            star.innerHTML = '<i class="fas fa-star"></i>';
+          }
+        });
+      }
+      
+      // تفعيل أحداث النجوم
+      stars.forEach(star => {
+        star.addEventListener('click', function() {
+          const rating = parseInt(this.getAttribute('data-rating'));
+          
+          // تحديث التقييم
+          mod.ratings[userId] = rating;
+          saveData();
+          
+          // تحديث عرض النجوم
+          stars.forEach((s, idx) => {
+            if (idx < rating) {
+              s.innerHTML = '<i class="fas fa-star"></i>';
+            } else {
+              s.innerHTML = '<i class="far fa-star"></i>';
+            }
+          });
+          
+          // تحديث التقييم في الواجهة
+          const ratingValues = Object.values(mod.ratings);
+          const averageRating = ratingValues.length > 0 ? 
+            (ratingValues.reduce((a, b) => a + b, 0) / ratingValues.length : 0;
+          
+          document.querySelector('.mod-details-subtitle').textContent = 
+            `الإصدار ${mod.version} | التقييم: ${averageRating.toFixed(1)} (${ratingValues.length}) | التنزيلات: ${mod.downloads.toLocaleString()} | التعليقات: ${mod.comments.length}`;
+        });
+        
+        star.addEventListener('mouseover', function() {
+          const rating = parseInt(this.getAttribute('data-rating'));
+          stars.forEach((s, idx) => {
+            s.innerHTML = idx < rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+          });
+        });
+        
+        star.addEventListener('mouseout', function() {
+          const currentRating = mod.ratings[userId] || 0;
+          stars.forEach((s, idx) => {
+            s.innerHTML = idx < currentRating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+          });
+        });
+      });
+    }
+
+    // توليد معرف فريد للمستخدم
+    function generateUserId() {
+      return 'user_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    // نظام البحث
+    function setupSearch() {
+      const searchInput = document.getElementById('searchInput');
+      const searchResults = document.getElementById('searchResults');
+      
+      searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.trim().toLowerCase();
+        if (searchTerm.length < 2) {
+          searchResults.style.display = 'none';
+          return;
+        }
+        
+        const results = Object.values(modsData).filter(mod => 
+          mod.name.toLowerCase().includes(searchTerm) || 
+          mod.description.toLowerCase().includes(searchTerm)
+        );
+        
+        if (results.length > 0) {
+          searchResults.innerHTML = results.map(mod => `
+            <div class="search-result-item" onclick="showModDetails('${mod.id}')">
+              <h4>${mod.name}</h4>
+              <p>${mod.description.substring(0, 100)}...</p>
+            </div>
+          `).join('');
+          searchResults.style.display = 'block';
+        } else {
+          searchResults.innerHTML = '<div class="no-results">لا توجد نتائج مطابقة للبحث</div>';
+          searchResults.style.display = 'block';
+        }
+      });
+      
+      // إخفاء نتائج البحث عند النقر خارجها
+      document.addEventListener('click', function(e) {
+        if (!searchResults.contains(e.target) && e.target !== searchInput) {
+          searchResults.style.display = 'none';
+        }
+      });
+    }
+
+    // تفعيل معرض الصور
+    function setupImageGallery() {
+      const mainImage = document.querySelector('.main-mod-image img');
+      const galleryImages = document.querySelectorAll('.gallery-image img');
+      
+      galleryImages.forEach(img => {
+        img.addEventListener('click', function() {
+          const tempSrc = mainImage.src;
+          mainImage.src = this.src;
+          this.src = tempSrc;
+        });
+      });
+    }
+
     // العودة إلى صفحة المودات
     function backToMods() {
       document.getElementById('mod-details-page').classList.remove('active-page');
@@ -1630,7 +2047,7 @@
       const pageId = activeLink ? activeLink.getAttribute('onclick').match(/'([^']+)'/)[1] : 'home';
       document.getElementById(pageId + '-page').classList.add('active-page');
     }
-    
+
     // تبديل الصفحات
     function showPage(pageId) {
       document.querySelector('.active-page').classList.remove('active-page');
@@ -1644,8 +2061,16 @@
       
       // إغلاق القائمة الجانبية إذا كانت مفتوحة
       document.getElementById('sidebar').classList.remove('open');
+      
+      // عرض المودات المناسبة للصفحة
+      if (pageId === 'home') {
+        displayMods(Object.values(modsData), 'modsGrid');
+      } else {
+        const filteredMods = Object.values(modsData).filter(mod => mod.category === pageId);
+        displayMods(filteredMods, `${pageId}-mods`);
+      }
     }
-    
+
     // إغلاق القائمة الجانبية عند النقر خارجها
     document.addEventListener('click', function(event) {
       const sidebar = document.getElementById('sidebar');
@@ -1705,27 +2130,78 @@
         }
       });
     }
-    
+
+    // تفعيل أحداث التنزيل
+    function setupDownloadButtons() {
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.mod-card-btn, .mod-download-btn')) {
+          e.preventDefault();
+          const modId = e.target.closest('[data-mod-id]').getAttribute('data-mod-id');
+          if (modsData[modId]) {
+            modsData[modId].downloads++;
+            saveData();
+            
+            // تحديث عداد التنزيلات
+            const totalDownloads = parseInt(document.getElementById('totalDownloads').textContent) + 1;
+            document.getElementById('totalDownloads').textContent = totalDownloads.toLocaleString();
+            localStorage.setItem('totalDownloads', totalDownloads);
+            
+            // عرض رسالة تنزيل
+            alert('جاري تحميل المود: ' + modsData[modId].name);
+            
+            // تحديث عرض المود إذا كان في صفحة التفاصيل
+            if (document.getElementById('mod-details-page').classList.contains('active-page')) {
+              const mod = modsData[modId];
+              const ratings = mod.ratings;
+              const ratingValues = Object.values(ratings);
+              const averageRating = ratingValues.length > 0 ? 
+                (ratingValues.reduce((a, b) => a + b, 0) / ratingValues.length : 0;
+              
+              document.querySelector('.mod-details-subtitle').textContent = 
+                `الإصدار ${mod.version} | التقييم: ${averageRating.toFixed(1)} (${ratingValues.length}) | التنزيلات: ${mod.downloads.toLocaleString()} | التعليقات: ${mod.comments.length}`;
+            }
+          }
+        }
+      });
+    }
+
+    // عداد الزوار الحقيقي
+    function updateVisitorCounter() {
+      const lastVisitDate = localStorage.getItem('lastVisitDate');
+      const currentDate = new Date().toLocaleDateString();
+      
+      let totalVisitors = localStorage.getItem('totalVisitors') ? parseInt(localStorage.getItem('totalVisitors')) : 0;
+      let todayVisitors = localStorage.getItem('todayVisitors') ? parseInt(localStorage.getItem('todayVisitors')) : 0;
+      
+      // زيادة العداد إذا كانت هذه أول زيارة اليوم
+      if (lastVisitDate !== currentDate) {
+        todayVisitors = 0;
+        localStorage.setItem('lastVisitDate', currentDate);
+      }
+      
+      // زيادة العدادات
+      totalVisitors++;
+      todayVisitors++;
+      
+      // حفظ البيانات في localStorage
+      localStorage.setItem('totalVisitors', totalVisitors);
+      localStorage.setItem('todayVisitors', todayVisitors);
+      
+      // عرض العدادات
+      document.getElementById('totalVisitors').textContent = totalVisitors.toLocaleString();
+      document.getElementById('todayVisitors').textContent = todayVisitors.toLocaleString();
+    }
+
     // عند تحميل الصفحة
     window.addEventListener('load', function() {
+      loadSavedData();
       showPage('home');
       updateVisitorCounter();
       setupBackToTop();
       setupFilters();
       setupFavButtons();
-      
-      // إعداد حدث التنزيل
-      document.querySelectorAll('.mod-card-btn, .mod-download-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          totalDownloads++;
-          localStorage.setItem('totalDownloads', totalDownloads);
-          document.getElementById('totalDownloads').textContent = totalDownloads.toLocaleString();
-          
-          // يمكنك هنا إضافة كود لتنزيل الملف الحقيقي
-          alert('شكراً لتحميلك المود! سيبدأ التنزيل قريباً');
-        });
-      });
+      setupDownloadButtons();
+      setupSearch();
     });
   </script>
 </body>
